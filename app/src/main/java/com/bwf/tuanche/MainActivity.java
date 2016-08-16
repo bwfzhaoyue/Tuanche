@@ -16,7 +16,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ListView lv_test;
-    private ListView lyc_lyc;
+    private ListView lyc_lyc_lyc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
