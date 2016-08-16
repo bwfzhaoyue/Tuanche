@@ -4,29 +4,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bwf.tuanche.mainpager.MainPagerActivity">
+
     <LinearLayout
         android:id="@+id/ll_search"
         android:layout_width="match_parent"
+        android:layout_height="45dp"
         android:layout_alignParentTop="true"
-        android:orientation="horizontal"
         android:background="@android:color/white"
-        android:layout_height="45dp">
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
     </LinearLayout>
-    <ScrollView
-        android:layout_above="@id/rel_buttom"
-        android:id="@+id/scr_mainpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </ScrollView>
     <RelativeLayout
         android:id="@+id/rel_buttom"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="55dp">
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true">
+
         <include layout="@layout/tabs" />
     </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scr_mainpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rel_buttom">
+
+    </ScrollView>
+
+
 </RelativeLayout>
