@@ -1,15 +1,18 @@
-package com.bwf.tuanche.mainpager;
+package com.bwf.tuanche.ui.welcome;
 
 import android.view.View;
 
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.tuanche.R;
 
-public class MainPagerActivity extends BaseActivity {
-
-
+/**
+ * Created by che on 2016/8/16
+ * Description:.
+ */
+public class GuideActivity extends BaseActivity{
+    @Override
     public int getContentViewId() {
-        return R.layout.activity_main_pager;
+        return R.layout.activity_guide;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class MainPagerActivity extends BaseActivity {
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
 
     }
 }

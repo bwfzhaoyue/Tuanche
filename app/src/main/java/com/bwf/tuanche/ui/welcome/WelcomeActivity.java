@@ -1,15 +1,16 @@
-package com.bwf.tuanche;
+package com.bwf.tuanche.ui.welcome;
 
 import android.view.View;
 
 import com.bwf.framwork.base.BaseActivity;
+import com.bwf.tuanche.R;
 
-public class WelcomActivity extends BaseActivity {
+public class WelcomeActivity extends BaseActivity {
 
 
     @Override
     public int getContentViewId() {
-        return R.layout.welcom;
+        return R.layout.welcome;
     }
 
     @Override
