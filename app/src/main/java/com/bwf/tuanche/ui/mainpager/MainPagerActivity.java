@@ -1,4 +1,4 @@
-package com.bwf.tuanche.mainpager;
+package com.bwf.tuanche.ui.mainpager;
 
 import android.view.View;
 

@@ -3,31 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bwf.tuanche.mainpager.MainPagerActivity">
+    tools:context=".ui.mainpager.MainPagerActivity">
 
     <LinearLayout
         android:id="@+id/ll_search"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:gravity="center_vertical"
         android:layout_alignParentTop="true"
         android:background="@android:color/white"
         android:orientation="horizontal">
 
         <TextView
+            android:text="成都"
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
+            android:gravity="center"
+            android:drawableRight="@mipmap/icon_top_add_arrow"
+            android:paddingLeft="@dimen/padding_10"
             android:layout_height="match_parent" />
+        <EditText
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginRight="@dimen/padding_10"
+            android:layout_marginTop="@dimen/padding_5"
+            android:gravity="center_vertical"
+            android:drawableLeft="@mipmap/icon_top_icon_search"
+            android:drawablePadding="@dimen/padding_10"
+            android:layout_marginBottom="@dimen/padding_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_top_icon_saomiao"
+            android:layout_width="wrap_content"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="@dimen/padding_10"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/rel_buttom"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="@dimen/footer_height"
         android:layout_alignParentBottom="true">
 
         <include layout="@layout/tabs" />
     </RelativeLayout>
 
     <ScrollView
+        android:layout_below="@id/ll_search"
         android:id="@+id/scr_mainpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,8 +1,9 @@
-package com.bwf.tuanche;
+package com.bwf.tuanche.ui.welcom;
 
 import android.view.View;
 
 import com.bwf.framwork.base.BaseActivity;
+import com.bwf.tuanche.R;
 
 public class WelcomActivity extends BaseActivity {
 
