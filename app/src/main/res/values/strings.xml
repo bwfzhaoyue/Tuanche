@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TuanChe</string>
+    <string name="pinpaixuanche">品牌选车</string>
+    <string name="tiaojianxuanche">条件选车</string>
 </resources>
