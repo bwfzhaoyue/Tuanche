@@ -4,10 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.welcom.WelcomActivity">
+    tools:context=".ui.welcome.WelcomeActivity">
 
 <ImageView
     android:src="@mipmap/start"
+<<<<<<< HEAD:app/src/main/res/layout/welcom.xml
+=======
+    android:scaleType="centerCrop"
+>>>>>>> 682c12410554a5b2795a5e88e678a2b266d80a8b:app/src/main/res/layout/welcome.xml
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 

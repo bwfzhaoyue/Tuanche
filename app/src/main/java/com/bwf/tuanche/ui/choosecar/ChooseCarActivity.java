@@ -1,15 +1,17 @@
-package com.bwf.tuanche.ui.welcom;
+package com.bwf.tuanche.ui.choosecar;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.tuanche.R;
 
-public class WelcomActivity extends BaseActivity {
+public class ChooseCarActivity extends BaseActivity {
 
     @Override
     public int getContentViewId() {
-        return R.layout.welcom;
+        return R.layout.activity_choose_car;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class WelcomActivity extends BaseActivity {
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
 
     }
 }
