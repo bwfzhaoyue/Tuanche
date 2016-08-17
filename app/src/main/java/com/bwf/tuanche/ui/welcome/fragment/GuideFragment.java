@@ -1,5 +1,6 @@
 package com.bwf.tuanche.ui.welcome.fragment;
 
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -8,6 +9,7 @@ import com.bwf.framwork.share.SharePrefreceHelper;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.mainpager.MainPagerActivity;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
  * Created by Asus on 2016/8/17.
@@ -51,11 +53,11 @@ public class GuideFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.img_kaiqi:
-//                SharePrefreceHelper.getInstence(getActivity()).setIsFirst(false);
+                SharePrefreceHelper.getInstence(getActivity()).setIsFirst(false);
                 img_kaiqi.setBackgroundResource(R.mipmap.start_btn_click);
-//                img_kaiqi.setImageResource(R.mipmap.start_btn_click);
+                img_kaiqi.setImageResource(R.mipmap.start_btn_click);
                 IntentUtils.openActivity(getContext(), MainPagerActivity.class);
-//                getActivity().finish();
+                getActivity().finish();
                 break;
         }
     }
