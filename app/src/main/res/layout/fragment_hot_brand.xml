@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment">
+<TextView
+    android:padding="@dimen/padding_10"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:textSize="@dimen/text_16"
+    android:text="热门品牌"
+    android:textColor="@android:color/black"
+    android:textStyle="bold"
+    android:layout_height="40dp" />
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rev_hot_brand"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+</LinearLayout>

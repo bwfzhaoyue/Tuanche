@@ -1,6 +1,7 @@
 package com.bwf.framwork.http;
 
 
+import com.bwf.framwork.utils.UrlUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 /**
@@ -20,5 +21,8 @@ public class HttpHelper {
                 .execute(callBack);
     }
 
+    public static void getTopBrand(String cityId,HttpCallBack callBack){
+        OkHttpUtils.get().url(UrlUtils.TOPBRAND).addParams("cityId",cityId).build().execute(callBack);
+    }
 
 }

@@ -7,7 +7,6 @@ import com.bwf.tuanche.R;
 
 public class WelcomActivity extends BaseActivity {
 
-
     @Override
     public int getContentViewId() {
         return R.layout.welcom;

@@ -7,7 +7,7 @@
     tools:context=".ui.welcom.WelcomActivity">
 
 <ImageView
-    android:src="@mipmap/guide01"
+    android:src="@mipmap/start"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
