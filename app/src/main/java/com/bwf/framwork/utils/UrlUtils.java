@@ -10,4 +10,9 @@ public class UrlUtils {
 
     public static final String TOPBRAND=BASE_URL+"/bwf_TuanChe_HomeServlet";
 
+    public static final String MAIN_BANNER_URL=BASE_URL+"/bwf_TuanChe_BannerServlet";
+
+    public static final String HOT_BRAND_URL=BASE_URL+"/bwf_TuanChe_TopBrand";
+
+    public static final String HOT_MODLE_URL=BASE_URL+"/bwf_TuanChe_Hotstyle";
 }

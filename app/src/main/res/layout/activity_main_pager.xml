@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@android:color/darker_gray"
     tools:context=".ui.mainpager.MainPagerActivity">
 
     <LinearLayout
@@ -64,7 +66,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/rel_buttom">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@android:color/darker_gray"/>
+        <fragment
+            android:id="@+id/frag_promote_tabs"
+            android:name="com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
+        <fragment
+            android:layout_marginTop="@dimen/padding_5"
+            android:id="@+id/frag_hot_brand"
+            android:name="com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:layout_marginTop="@dimen/padding_5"
+            android:id="@+id/frag_banner"
+            android:name="com.bwf.tuanche.ui.mainpager.fragment.BannerFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:layout_marginTop="@dimen/padding_5"
+            android:id="@+id/frag_hot_modle"
+            android:name="com.bwf.tuanche.ui.mainpager.fragment.HotModleFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     </ScrollView>
 
 

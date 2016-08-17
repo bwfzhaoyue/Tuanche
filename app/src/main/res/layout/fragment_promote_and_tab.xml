@@ -2,14 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     tools:context="com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment">
 
-    <android.support.v4.view.ViewPager
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/vp_promote"
+        fresco:placeholderImage="@mipmap/default_special_1"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="130dp"
         />
 
     <LinearLayout
@@ -24,13 +26,14 @@
              android:background="@android:color/white"
              android:orientation="vertical"
              android:layout_height="match_parent">
-             <ImageView
+             <com.facebook.drawee.view.SimpleDraweeView
                  android:id="@+id/img_lpbuycar"
                  android:layout_width="70dp"
                  android:layout_height="70dp"
                  android:padding="@dimen/padding_5"
+                 fresco:placeholderImageScaleType="centerCrop"
                  android:layout_marginLeft="@dimen/padding_5"
-                 android:src="@mipmap/icon_default_color_tone"/>
+                 fresco:placeholderImage="@mipmap/icon_default_color_tone"/>
              <TextView
                  android:id="@+id/tv_lpbuycar"
                  android:textColor="@android:color/black"
@@ -49,13 +52,14 @@
             android:background="@android:color/white"
             android:orientation="vertical"
             android:layout_height="match_parent">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img_carsticker"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:padding="@dimen/padding_5"
                 android:layout_marginLeft="@dimen/padding_5"
-                android:src="@mipmap/icon_default_color_tone"/>
+                fresco:placeholderImageScaleType="centerCrop"
+                fresco:placeholderImage="@mipmap/icon_default_color_tone"/>
             <TextView
                 android:id="@+id/tv_carsticker"
                 android:textColor="@android:color/black"
@@ -75,13 +79,14 @@
             android:background="@android:color/white"
             android:orientation="vertical"
             android:layout_height="match_parent">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img_newmodle"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:padding="@dimen/padding_5"
                 android:layout_marginLeft="@dimen/padding_5"
-                android:src="@mipmap/icon_default_color_tone"/>
+                fresco:placeholderImageScaleType="centerCrop"
+                fresco:placeholderImage="@mipmap/icon_default_color_tone"/>
             <TextView
                 android:id="@+id/tv_newmodle"
                 android:textColor="@android:color/black"
@@ -101,13 +106,14 @@
             android:background="@android:color/white"
             android:orientation="vertical"
             android:layout_height="match_parent">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img_compareBX"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:padding="@dimen/padding_5"
                 android:layout_marginLeft="@dimen/padding_5"
-                android:src="@mipmap/icon_default_color_tone"/>
+                fresco:placeholderImage="@mipmap/icon_default_color_tone"
+                fresco:placeholderImageScaleType="centerCrop"/>
             <TextView
                 android:id="@+id/tv_compareBX"
                 android:textColor="@android:color/black"

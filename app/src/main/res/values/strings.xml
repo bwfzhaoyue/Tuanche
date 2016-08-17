@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">TuanChe</string>
-<<<<<<< HEAD
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
     <string name="pinpaixuanche">品牌选车</string>
     <string name="tiaojianxuanche">条件选车</string>
->>>>>>> 682c12410554a5b2795a5e88e678a2b266d80a8b
+    <string name="login_num">已有%s人报名</string>
+    <string name="guide_price" formatted="false">指导价:%s-%s万</string>
 </resources>

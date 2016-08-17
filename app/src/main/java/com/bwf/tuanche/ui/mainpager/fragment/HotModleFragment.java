@@ -6,17 +6,17 @@ import android.view.View;
 
 import com.bwf.framwork.base.BaseFragment;
 import com.bwf.tuanche.R;
-import com.bwf.tuanche.ui.mainpager.entity.hotbrand.HotBrandResultBean;
-import com.bwf.tuanche.ui.mainpager.fragment.adpter.HotBrandAdpter;
+import com.bwf.tuanche.ui.mainpager.entity.hotmodle.HotModleResultBean;
+import com.bwf.tuanche.ui.mainpager.fragment.adpter.HotModleAdpter;
 
-public class HotBrandFragment extends BaseFragment {
+
+public class HotModleFragment extends BaseFragment {
 
     private RecyclerView rev_hot_brand_frag;
 
-    private HotBrandResultBean result;
+    private HotModleResultBean result;
 
-    private HotBrandAdpter adpter;
-
+    private HotModleAdpter adpter;
     @Override
     protected int getResource() {
         return R.layout.fragment_hot_brand;
@@ -42,14 +42,13 @@ public class HotBrandFragment extends BaseFragment {
 
     }
 
-    public void setResult(HotBrandResultBean result) {
+    public void setResult(HotModleResultBean result) {
         this.result = result;
-        adpter=new HotBrandAdpter(this.getActivity());
-        GridLayoutManager layoutManager=new GridLayoutManager(this.getActivity(),3);
+        adpter=new HotModleAdpter(this.getActivity());
+        adpter.setResults(result.result);
+        GridLayoutManager layoutManager=new GridLayoutManager(this.getActivity(),2);
         rev_hot_brand_frag.setLayoutManager(layoutManager);
-        adpter.setResult(result);
         rev_hot_brand_frag.setAdapter(adpter);
         adpter.notifyDataSetChanged();
-
     }
 }

@@ -3,10 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="0.5dp"
+    android:background="@android:color/darker_gray"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     tools:context="com.bwf.tuanche.ui.mainpager.fragment.adpter.HotBrandAdpter">
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="150dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@android:color/white"
+        android:layout_height="150dp">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_brand"
+            fresco:placeholderImage="@mipmap/icon_default_color_tone"
+            android:layout_width="70dp"
+            android:padding="@dimen/padding_10"
+            android:layout_marginTop="@dimen/padding_10"
+            fresco:placeholderImageScaleType="centerCrop"
+            android:layout_height="70dp" />
 
+        <TextView
+            android:id="@+id/tv_brand_name"
+            android:layout_width="wrap_content"
+            android:text="车名称"
+            android:textSize="@dimen/text_14"
+            android:textColor="@android:color/black"
+            android:layout_height="25dp" />
+        <TextView
+            android:id="@+id/tv_login_num"
+            android:layout_width="wrap_content"
+            android:text="@string/login_num"
+            android:textSize="@dimen/text_14"
+            android:visibility="visible"
+            android:textColor="@android:color/darker_gray"
+            android:layout_height="25dp" />
+    </LinearLayout>
 </RelativeLayout>
