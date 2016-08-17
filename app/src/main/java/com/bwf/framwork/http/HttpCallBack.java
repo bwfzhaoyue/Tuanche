@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONException;
 import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.StringUtils;
+import com.bwf.framwork.utils.ToastUtil;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.lang.reflect.ParameterizedType;
@@ -36,7 +37,8 @@ public abstract class HttpCallBack<T extends BaseBean> extends StringCallback {
             LogUtils.e("response" + response);
 
 
-            try {
+            try{
+
                 BaseBean baseBean = JSON.parseObject(response, BaseBean.class);
                 if ("10000".equals(baseBean.code)) {
                     onSuccess(JSON.parseObject(response, tClass));

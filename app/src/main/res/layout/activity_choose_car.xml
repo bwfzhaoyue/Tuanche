@@ -26,6 +26,7 @@
             android:layout_centerInParent="true">
 
             <TextView
+                android:id="@+id/tv_brand_choosecar"
                 android:layout_width="@dimen/padding_10"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -34,6 +35,7 @@
                 android:gravity="center"
                 android:textColor="@android:color/white"/>
             <TextView
+                android:id="@+id/tv_condition_choosecar"
                 android:layout_width="@dimen/padding_10"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -54,13 +56,14 @@
 
     </RelativeLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <!-- 品牌选车布局 -->
         <LinearLayout
-            android:id="@+id/ll_content"
+            android:id="@+id/ll_brand_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
@@ -71,7 +74,28 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="热门"
+                        android:background="@color/light_gray"
+                        android:textColor="@color/black"
+                        android:paddingLeft="10dp"
+                        android:gravity="left|center_vertical"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_hotcar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:minHeight="100dp"/>
+
+                </LinearLayout>
 
             </ScrollView>
 
@@ -82,12 +106,154 @@
 
         </LinearLayout>
 
-        <View
+        <!-- 条件选车布局 -->
+        <ScrollView
+            android:id="@+id/ll_condition_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+            <!--被ScrollView包裹的线性布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/light_gray">
+
+            <!--价格选车-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/white">
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!--级别选车-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/level"
+                    android:textColor="@color/black"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/light_gray"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_bos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!--国别选车-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/series"
+                    android:textColor="@color/black"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_series"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!--排量选车-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/bos"
+                    android:textColor="@color/black"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_reset"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_reset"
+                    android:text="重置"
+                    android:gravity="center"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/tv_check"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_check"
+                    android:text="查看"
+                    android:gravity="center"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        </ScrollView>
+
+        <com.bwf.tuanche.view.LoadingView
             android:id="@+id/view_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:gravity="center"
             android:visibility="gone"/>
 
-    </FrameLayout>
+    </RelativeLayout>
 
 </LinearLayout>

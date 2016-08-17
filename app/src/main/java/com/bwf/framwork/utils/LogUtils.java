@@ -12,7 +12,7 @@ import java.util.Locale;
 public class LogUtils {
 
     private static boolean isLogEnabled = true;// 默认开启
-    private static final String defaultTag = "Landz";// log默认的 tag
+    private static final String defaultTag = "Tuanche";// log默认的 tag
     private static final String TAG_CONTENT_PRINT = "%s.%s:%d";
 
     /**

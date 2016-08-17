@@ -41,5 +41,37 @@ public class HttpHelper {
 
 
     }
+    /**
+     * 热门品牌
+     * @param cityId
+     */
+    public static void getHotCar(String cityId,HttpCallBack callBack){
+        OkHttpUtils.post().url(UrlUtils.HOT_CAR_TYPE)
+                .addParams("isBuy","2")
+                .addParams("cityId",cityId)
+                .build()
+                .execute(callBack);
+    }
+
+    /**
+     * 选车列表
+     * @param cityId
+     */
+    public static void getCarTypeList(String cityId,HttpCallBack callBack){
+        OkHttpUtils.post().url(UrlUtils.CAR_TYPE_LIST)
+                .addParams("cityId",cityId)
+                .build()
+                .execute(callBack);
+    }
+
+    /**
+     * 根据条件选车模块中的选车条件
+     */
+    public static void getConditionToChoose(HttpCallBack callBack){
+        OkHttpUtils.post().url(UrlUtils.CHOOSE_CAR_BY_CONDITION)
+                .build()
+                .execute(callBack);
+    }
+
 
 }

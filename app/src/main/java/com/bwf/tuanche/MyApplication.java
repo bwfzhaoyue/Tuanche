@@ -3,8 +3,10 @@ package com.bwf.tuanche;
 import android.app.Application;
 import android.content.Context;
 
+import com.bwf.framwork.utils.LogUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +37,7 @@ public class MyApplication extends Application {
      */
     public void initOkhttp(){
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(new LoggerInterceptor("Tuanche"))
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 //其他配置
