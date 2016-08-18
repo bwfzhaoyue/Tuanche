@@ -73,5 +73,16 @@ public class HttpHelper {
                 .execute(callBack);
     }
 
+    /**
+     * 根据车品牌获取车列表
+     */
+    public static void getCarListByBrand(String type,String cityId,String brandId,HttpCallBack callBack){
+        OkHttpUtils.post().url(UrlUtils.CAR_LIST_BY_BRAND)
+                .addParams("type",type)
+                .addParams("cityId",cityId)
+                .addParams("brandId",brandId)
+                .build()
+                .execute(callBack);
+    }
 
 }

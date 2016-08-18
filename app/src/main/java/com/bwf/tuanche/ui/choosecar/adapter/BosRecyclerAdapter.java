@@ -43,6 +43,10 @@ public class BosRecyclerAdapter extends RecyclerView.Adapter<BosRecyclerAdapter.
         this.list = list;
     }
 
+    public List<BosBean> getList() {
+        return list;
+    }
+
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(context, R.layout.item_bos_recycler,null);
