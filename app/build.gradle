@@ -21,8 +21,10 @@ android {
         main {
             res.srcDirs = ['src/main/res', 'src/main/res/drawable']
             resources.srcDirs = ['src/main/resources', 'src/main/resources/drawable']
+            jniLibs.srcDirs = ['libs']
         }
     }
+
 }
 
 dependencies {

@@ -10,14 +10,14 @@ public class BaseBean{
 
     public String msg;//返回msg
 
-   public String result;//数据结果
+//   public String result;//数据结果
+
 
     @Override
     public String toString() {
         return "BaseBean{" +
                 "code='" + code + '\'' +
                 ", msg='" + msg + '\'' +
-                ", result='" + result + '\'' +
                 '}';
     }
 }
