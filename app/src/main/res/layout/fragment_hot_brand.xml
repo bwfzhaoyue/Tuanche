@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment">
+
+    <TextView
+        android:id="@+id/tv_hot_brand_frag"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        android:padding="@dimen/padding_10"
+        android:text="热门品牌"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_16"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rev_hot_brand_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

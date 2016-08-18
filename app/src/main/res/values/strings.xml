@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">TuanChe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pinpaixuanche">品牌选车</string>
     <string name="tiaojianxuanche">条件选车</string>
     <string name="citychoice">选择城市-%s</string>
+    <string name="login_num">已有%s人报名</string>
+    <string name="guide_price" formatted="false">指导价:%s-%s万</string>
+    <string name="loading">正在加载中...</string>
+    <string name="loadingerr">加载失败</string>
+    <string name="level">级别</string>
+    <string name="series">国别</string>
+    <string name="bos">排量</string>
 </resources>

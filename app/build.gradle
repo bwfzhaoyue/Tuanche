@@ -19,7 +19,7 @@ android {
     }
     sourceSets {
         main {
-            res.srcDirs = ['src/main/res', 'src/main/res/drawable']
+            res.srcDirs = ['src/main/res', 'src/main/res/drawable', 'src/main/res/anim']
             resources.srcDirs = ['src/main/resources', 'src/main/resources/drawable']
             jniLibs.srcDirs = ['libs']
         }
@@ -27,14 +27,16 @@ android {
 
 }
 
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.android.support:design:24.0.0'
     //facebook图片处理
-    compile 'com.facebook.fresco:fresco:0.12.0'
 
     //okhttp
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:design:24.0.0'
+    compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.android.support:support-v4:24.0.0'
 }

@@ -1,0 +1,335 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical"
+    tools:context="com.bwf.tuanche.ui.mainpager.fragment.BannerFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:id="@+id/rel_center_banner1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_center_banner1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/padding_10"
+                fresco:placeholderImage="@mipmap/default_special_1"
+                fresco:placeholderImageScaleType="centerCrop" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:id="@+id/rel_center_banner2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0.5dp"
+            android:layout_weight="1">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_center_banner2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/padding_10"
+                android:layout_marginRight="@dimen/padding_10"
+                android:layout_marginBottom="@dimen/padding_10"
+                fresco:placeholderImage="@mipmap/default_special_1"
+                fresco:placeholderImageScaleType="centerCrop" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:id="@+id/rel_pos_banner_type1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_pos_banner_type1_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/padding_5"
+                    android:text="婚姻座驾"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_pos_banner_type1_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="给她最好的"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/img_pos_banner_type1"
+                    android:layout_marginTop="@dimen/padding_5"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    fresco:placeholderImage="@mipmap/default_special_1"
+                    fresco:placeholderImageScaleType="centerCrop" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="0.5dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:id="@+id/rel_pos_banner_type2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/padding_10">
+
+                    <TextView
+                        android:id="@+id/tv_pos_banner_type2_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="买团车车险"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="@dimen/text_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_pos_banner_type2_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_5"
+                        android:gravity="center_vertical"
+                        android:text="平均节省500元"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="@dimen/text_14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/img_pos_banner_type2"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/padding_10"
+                    fresco:placeholderImage="@mipmap/icon_default_color_tone"
+                    fresco:placeholderImageScaleType="centerCrop" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="0.5dp"
+                android:background="@android:color/white"
+                android:id="@+id/rel_pos_banner_type3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/padding_10">
+
+                    <TextView
+                        android:id="@+id/tv_pos_banner_type3_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="买团车车险"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textSize="@dimen/text_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_pos_banner_type3_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_5"
+                        android:gravity="center_vertical"
+                        android:text="平均节省500元"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="@dimen/text_14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/img_pos_banner_type3"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/padding_10"
+                    fresco:placeholderImage="@mipmap/icon_default_color_tone"
+                    fresco:placeholderImageScaleType="centerCrop" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="0.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:background="@android:color/white"
+            android:id="@+id/ll_pos_banner_type4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_pos_banner_type4_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_10"
+                android:gravity="center_horizontal"
+                android:text="商务专享"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/tv_pos_banner_type4_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="center_horizontal"
+                android:text="洽谈一路有它"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_12" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_pos_banner_type4"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="@dimen/padding_10"
+                fresco:placeholderImage="@mipmap/default_special_3"
+                fresco:placeholderImageScaleType="centerCrop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="0.5dp"
+            android:background="@android:color/white"
+            android:id="@+id/ll_pos_banner_type5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_pos_banner_type5_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_10"
+                android:gravity="center_horizontal"
+                android:text="商务专享"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/tv_pos_banner_type5_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="center_horizontal"
+                android:text="洽谈一路有它"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_12" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_pos_banner_type5"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="@dimen/padding_10"
+                fresco:placeholderImage="@mipmap/default_special_3"
+                fresco:placeholderImageScaleType="centerCrop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="0.5dp"
+            android:background="@android:color/white"
+            android:id="@+id/ll_pos_banner_type6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_pos_banner_type6_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_10"
+                android:gravity="center_horizontal"
+                android:text="商务专享"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/tv_pos_banner_type6_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="center_horizontal"
+                android:text="洽谈一路有它"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_12" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_pos_banner_type6"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="@dimen/padding_10"
+                fresco:placeholderImage="@mipmap/default_special_3"
+                fresco:placeholderImageScaleType="centerCrop" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
