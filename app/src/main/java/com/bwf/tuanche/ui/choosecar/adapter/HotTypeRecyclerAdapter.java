@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bwf.framwork.image.ImageLoader;
+import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.choosecar.entity.hotcar.HotCarTypeBean;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -25,8 +26,14 @@ public class HotTypeRecyclerAdapter extends RecyclerView.Adapter<HotTypeRecycler
 
     private ImageLoader imageLoader;
 
+    private HotBrandCallBack callBack;
+
     {
         imageLoader = ImageLoader.getInstance();
+    }
+
+    public void setCallBack(HotBrandCallBack callBack) {
+        this.callBack = callBack;
     }
 
     public HotTypeRecyclerAdapter(Context context) {
@@ -52,10 +59,18 @@ public class HotTypeRecyclerAdapter extends RecyclerView.Adapter<HotTypeRecycler
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerViewHolder holder, final int position) {
 
         imageLoader.disPlayImage(holder.img_brand_logo,list.get(position).logo);
         holder.tv_brand_name.setText(list.get(position).name);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (callBack!=null)
+                    callBack.onHotBrandClick(list.get(position));
+            }
+        });
     }
 
     @Override
@@ -72,5 +87,9 @@ public class HotTypeRecyclerAdapter extends RecyclerView.Adapter<HotTypeRecycler
         public RecyclerViewHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public interface HotBrandCallBack{
+        void onHotBrandClick(HotCarTypeBean bean);
     }
 }

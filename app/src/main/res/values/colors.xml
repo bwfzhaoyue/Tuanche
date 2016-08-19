@@ -12,7 +12,11 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="blackban">#BF000000</color>
-    <color name="grayxian">#4f919090</color>
     <color name="grayfenge">#dddddd</color>
+    <color name="line_color">#969696</color>
+    <color name="loginBackground">#FEF0EF</color>
+    <color name="little_red">#FEBAB9</color>
+    <color name="grayxian">#919090</color>
+    <color name="graylinexian">#4f919090</color>
 
 </resources>

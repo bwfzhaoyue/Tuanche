@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view_transparent"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"/>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <!--热门和价格的线性布局-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_hot"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_hot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="热门"
+                        android:textSize="@dimen/text_20"
+                        android:textColor="@color/title_red"/>
+                    <View
+                        android:id="@+id/view_belowhot"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/title_red"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_price"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="价格"
+                        android:textSize="@dimen/text_20"
+                        android:textColor="@color/black"/>
+                    <View
+                        android:id="@+id/view_belowprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/title_red"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_carname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="车型"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:background="@color/light_gray"
+                android:paddingLeft="8dp"
+                android:textSize="20sp"/>
+
+            <ListView
+                android:id="@+id/lv_cars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="1dp"
+                android:divider="@color/light_gray"/>
+
+
+        </LinearLayout>
+
+        <!--加载中动画-->
+        <com.bwf.tuanche.view.LoadingView
+            android:id="@+id/view_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
