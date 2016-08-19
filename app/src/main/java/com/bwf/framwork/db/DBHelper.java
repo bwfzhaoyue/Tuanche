@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.bwf.framwork.Constants;
 import com.bwf.framwork.base.BaseModel;
-import com.bwf.tuanche.MyApplication;
+import com.bwf.tuanche.application.MyApplication;
 
 
 /**

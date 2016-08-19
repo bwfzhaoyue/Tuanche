@@ -2,7 +2,7 @@ package com.bwf.framwork.utils;
 
 import android.widget.Toast;
 
-import com.bwf.tuanche.MyApplication;
+import com.bwf.tuanche.application.MyApplication;
 
 
 /**
