@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -68,13 +69,15 @@ public class ChooseCarPopWindow extends PopupWindow implements View.OnClickListe
         this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
         this.setFocusable(true);
-        this.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+       // this.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         this.setBackgroundDrawable(new BitmapDrawable());
+        setAnimationStyle(R.style.PopupAnimation);
+        update();
 
         initView(view);
-
         adapter = new CarInfoAdapter(activity);
         lv_cars.setAdapter(adapter);
+
     }
 
     /**
@@ -113,6 +116,7 @@ public class ChooseCarPopWindow extends PopupWindow implements View.OnClickListe
                 adapter.notifyDataSetChanged();
             }
 
+
             @Override
             public void onFail(String errMsg) {
                 view_loading.setLoadFail();
@@ -142,7 +146,7 @@ public class ChooseCarPopWindow extends PopupWindow implements View.OnClickListe
     public void showPopWindow(View view) {
         if (!isShowing()) {
             this.showAsDropDown(view);//显示在view的下方
-            // this.showAtLocation(view, Gravity.TOP, 0, 0);//可以显示在指定view的指定位置
+//             this.showAtLocation(view, Gravity.CENTER, 0, 0);//可以显示在指定view的指定位置
         }
     }
 

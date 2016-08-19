@@ -14,7 +14,6 @@ public class UrlUtils {
 
     public static final String TOPBRAND=BASE_URL+"/bwf_TuanChe_HomeServlet";
 
-<<<<<<< HEAD
     //品牌选车中的热门品牌-赵玥
     public static final String HOT_CAR_TYPE = BASE_URL + "/bwf_TuanChe_TopBrand";
 
@@ -26,16 +25,6 @@ public class UrlUtils {
 
     //根据车品牌获取车列表
     public static final String CAR_LIST_BY_BRAND = BASE_URL + "/bwf_TuanChe_BrandCarStyleServlet";
-=======
-    //品牌选车中的热门品牌
-    public static final String HOT_CAR_TYPE = BASE_URL + "/bwf_TuanChe_TopBrand";
-
-    //选车列表
-    public static final String CAR_TYPE_LIST = BASE_URL +"/bwf_TuanChe_SelectTopBrand";
-
-    //条件选车
-    public static final String CHOOSE_CAR_BY_CONDITION = BASE_URL + "/bwf_TuanChe_SelectCarInfosServlet";
->>>>>>> e94555ec5e6524225d7567a4ea87a5320c91733e
 
     public static final String MAIN_BANNER_URL=BASE_URL+"/bwf_TuanChe_BannerServlet";
 
