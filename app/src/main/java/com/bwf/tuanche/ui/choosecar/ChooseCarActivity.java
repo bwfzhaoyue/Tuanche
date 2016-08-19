@@ -5,8 +5,11 @@ import android.os.Build;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -14,13 +17,20 @@ import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
+import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.choosecar.adapter.BosRecyclerAdapter;
 import com.bwf.tuanche.ui.choosecar.adapter.HotTypeRecyclerAdapter;
+import com.bwf.tuanche.ui.choosecar.adapter.LevelRecyclerAdapter;
 import com.bwf.tuanche.ui.choosecar.adapter.SeriesRecyclerAdapter;
+import com.bwf.tuanche.ui.choosecar.adapter.TypeListExpandAdapter;
 import com.bwf.tuanche.ui.choosecar.entity.condition.ConditionResult;
+import com.bwf.tuanche.ui.choosecar.entity.hotcar.HotCarTypeBean;
 import com.bwf.tuanche.ui.choosecar.entity.hotcar.HotTypeResult;
+import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeBean;
+import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeListResult;
+import com.bwf.tuanche.view.ChooseCarPopWindow;
 import com.bwf.tuanche.view.LoadingView;
 
 /**
@@ -36,19 +46,30 @@ public class ChooseCarActivity extends BaseActivity {
 
     private LinearLayout ll_brand_content;//品牌选车
 
-    private ScrollView ll_condition_content;//条件选车整个页面
+    private ScrollView sc_condition_content;//条件选车整个页面
 
-    private LoadingView view_loading;
+    private LoadingView view_loading;//正在加载中的自定义View
 
     private RecyclerView recycler_hotcar;//热门品牌的RecyclerView
 
     private HotTypeRecyclerAdapter recyclerAdapter;//热门品牌的RecyclerView的适配器
 
-    private RecyclerView recycler_bos,recycler_series;//条件选车-级别,国别
+    private RecyclerView recycler_bos,recycler_series,recycler_level;//条件选车-级别,国别,排量
 
     private BosRecyclerAdapter bosRecyclerAdapter;//级别适配器
 
     private SeriesRecyclerAdapter seriesRecyclerAdapter;//国别适配器
+
+    private LevelRecyclerAdapter levelRecyclerAdapter;//排量适配器
+
+    private Button bt_reset,bt_check;//底部重置和查看按钮
+
+    private ExpandableListView exlv_brandlist;//二级展开列表
+
+    private TypeListExpandAdapter expandAdapter;//耳机列表适配器
+
+    private ChooseCarPopWindow popWindow;//点击车型弹窗
+    private RelativeLayout rl_abovepop;//让popWindow显示在他之下
 
     @Override
     public int getContentViewId() {
@@ -68,21 +89,25 @@ public class ChooseCarActivity extends BaseActivity {
         tv_brand_choosecar = findViewByIdNoCast(R.id.tv_brand_choosecar);
         tv_condition_choosecar = findViewByIdNoCast(R.id.tv_condition_choosecar);
         ll_brand_content = findViewByIdNoCast(R.id.ll_brand_content);
-        ll_condition_content = findViewByIdNoCast(R.id.ll_condition_content);
+        sc_condition_content = findViewByIdNoCast(R.id.sc_condition_content);
         view_loading = findViewByIdNoCast(R.id.view_loading);
         recycler_hotcar = findViewByIdNoCast(R.id.recycler_hotcar);
         recycler_bos = findViewByIdNoCast(R.id.recycler_bos);
         recycler_series = findViewByIdNoCast(R.id.recycler_series);
+        recycler_level = findViewByIdNoCast(R.id.recycler_level);
+        exlv_brandlist = findViewByIdNoCast(R.id.exlv_brandlist);
+        bt_reset = findViewByIdNoCast(R.id.bt_reset);
+        bt_check = findViewByIdNoCast(R.id.bt_check);
+        rl_abovepop = findViewByIdNoCast(R.id.rl_abovepop);
 
-        setOnClick(img_search,tv_brand_choosecar,tv_condition_choosecar);
+        setOnClick(img_search,tv_brand_choosecar,tv_condition_choosecar,bt_reset,bt_check);
     }
 
     @Override
     public void initData() {
 
-        recycler_hotcar.setLayoutManager(new GridLayoutManager(this,4));//表格布局 每行四个
-        recyclerAdapter = new HotTypeRecyclerAdapter(this);//初始化热门车型适配器
-        recycler_hotcar.setAdapter(recyclerAdapter);//设置适配器
+        popWindow = new ChooseCarPopWindow(this);
+
 
         //条件选车-级别
         recycler_bos.setLayoutManager(new GridLayoutManager(this,3));
@@ -94,6 +119,45 @@ public class ChooseCarActivity extends BaseActivity {
         seriesRecyclerAdapter = new SeriesRecyclerAdapter(this);
         recycler_series.setAdapter(seriesRecyclerAdapter);
 
+        //条件选车-国别
+        recycler_level.setLayoutManager(new GridLayoutManager(this,3));
+        levelRecyclerAdapter = new LevelRecyclerAdapter(this);
+        recycler_level.setAdapter(levelRecyclerAdapter);
+
+        //热门车型
+        View headerView = View.inflate(this,R.layout.header_hotbrand,null);
+        recycler_hotcar = (RecyclerView) headerView.findViewById(R.id.recycler_hotcar);
+        recycler_hotcar.setLayoutManager(new GridLayoutManager(this,4));//表格布局 每行四个
+        recyclerAdapter = new HotTypeRecyclerAdapter(this);//初始化热门车型适配器
+        recycler_hotcar.setAdapter(recyclerAdapter);//设置适配器
+
+        //热门品牌的RecyclerView点击回调
+        recyclerAdapter.setCallBack(new HotTypeRecyclerAdapter.HotBrandCallBack() {
+            @Override
+            public void onHotBrandClick(HotCarTypeBean bean) {
+                popWindow.setBrandId(bean.id,cityId);
+                popWindow.showPopWindow(rl_abovepop);
+            }
+        });
+        //品牌选车扩展列表
+        exlv_brandlist.setGroupIndicator(null);
+        exlv_brandlist.addHeaderView(headerView,null,false);
+        exlv_brandlist.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            //设置Group的点击事件 屏蔽点击关闭
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v,int groupPosition, long id) {
+                return true;
+            }
+        });
+        expandAdapter = new TypeListExpandAdapter(this);
+        expandAdapter.setCallBack(new TypeListExpandAdapter.ExpandCallBack() {
+            @Override
+            public void onChildClick(TypeBean bean) {
+                popWindow.setBrandId(bean.id,cityId);
+                popWindow.showPopWindow(rl_abovepop);
+            }
+        });
+
         //加载到热门车型数据以后刷新适配器
         HttpHelper.getHotCar(cityId, new HttpCallBack<HotTypeResult>() {
             @Override
@@ -104,7 +168,24 @@ public class ChooseCarActivity extends BaseActivity {
 
             @Override
             public void onFail(String errMsg) {
-                ToastUtil.showToast(errMsg);
+                ToastUtil.showToast("热门品牌列表加载失败："+errMsg);
+            }
+        });
+
+        //加载品牌列表以后刷新适配器
+        HttpHelper.getCarTypeList(cityId, new HttpCallBack<TypeListResult>() {
+            @Override
+            public void onSuccess(TypeListResult result) {
+                expandAdapter.setGroupList(result.getSeparatedList());
+                exlv_brandlist.setAdapter(expandAdapter);
+                for (int i=0;i< result.getSeparatedList().size();i++){
+                    exlv_brandlist.expandGroup(i);
+                }
+            }
+
+            @Override
+            public void onFail(String errMsg) {
+                ToastUtil.showToast("品牌列表加载失败："+ errMsg);
             }
         });
 
@@ -117,11 +198,14 @@ public class ChooseCarActivity extends BaseActivity {
 
                 seriesRecyclerAdapter.setList(result.result.series);
                 seriesRecyclerAdapter.notifyDataSetChanged();
+
+                levelRecyclerAdapter.setList(result.result.levle);
+                levelRecyclerAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFail(String errMsg) {
-                ToastUtil.showToast("级别列表加载失败："+ errMsg);
+                ToastUtil.showToast("条件加载失败："+ errMsg);
             }
         });
 
@@ -142,7 +226,7 @@ public class ChooseCarActivity extends BaseActivity {
                 tv_condition_choosecar.setBackground(getResources().getDrawable(R.mipmap.round_white_right));
 
                 ll_brand_content.setVisibility(View.VISIBLE);
-                ll_condition_content.setVisibility(View.GONE);
+                sc_condition_content.setVisibility(View.GONE);
                 break;
             case R.id.tv_condition_choosecar://条件选车按钮
                 tv_brand_choosecar.setTextColor(getResources().getColor(R.color.title_red));
@@ -152,7 +236,24 @@ public class ChooseCarActivity extends BaseActivity {
                 tv_condition_choosecar.setBackground(getResources().getDrawable(R.mipmap.round_red_right));
 
                 ll_brand_content.setVisibility(View.GONE);
-                ll_condition_content.setVisibility(View.VISIBLE);
+                sc_condition_content.setVisibility(View.VISIBLE);
+                break;
+            case R.id.bt_reset://重置
+                for (int i = 0;i < bosRecyclerAdapter.getItemCount();i++){
+                    bosRecyclerAdapter.getList().get(i).isSelected = false;
+                }
+                bosRecyclerAdapter.notifyDataSetChanged();
+                for (int i = 0;i < seriesRecyclerAdapter.getItemCount();i++){
+                    seriesRecyclerAdapter.getList().get(i).isSelected = false;
+                }
+                seriesRecyclerAdapter.notifyDataSetChanged();
+                for (int i = 0;i < levelRecyclerAdapter.getItemCount();i++){
+                    levelRecyclerAdapter.getList().get(i).isSelected = false;
+                }
+                levelRecyclerAdapter.notifyDataSetChanged();
+                break;
+            case R.id.bt_check://查看
+
                 break;
         }
     }
