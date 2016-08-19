@@ -1,11 +1,10 @@
 package com.bwf.framwork.image;
 
-import android.content.Context;
 import android.net.Uri;
 
 import com.bwf.framwork.utils.DisplayUtil;
 import com.bwf.framwork.utils.StringUtils;
-import com.bwf.tuanche.MyApplication;
+import com.bwf.tuanche.application.MyApplication;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;

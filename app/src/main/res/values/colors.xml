@@ -11,6 +11,9 @@
     <color name="title_red_touming">#77FF3939</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="line_color">#969696</color>
+    <color name="loginBackground">#FEF0EF</color>
+    <color name="little_red">#FEBAB9</color>
     <color name="grayxian">#919090</color>
 
 </resources>
