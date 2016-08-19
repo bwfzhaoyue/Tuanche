@@ -16,9 +16,9 @@ import java.util.List;
  * Description:.
  */
 public class CityChoiceAdapter extends BaseAdapter{
+
     private Context context;
     private List<OpenCitysBean> openCitysBeanList;
-
 
     public CityChoiceAdapter(Context context) {
         this.context = context;

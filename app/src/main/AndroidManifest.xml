@@ -30,11 +30,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".ui.mainpager.MainPagerActivity"/>
-        <activity android:name=".ui.welcome.WelcomeActivity"></activity>
+        <activity android:name=".ui.choosecar.ChooseCarActivity"></activity>
 
         <!-- 引导页 -->
         <activity android:name=".ui.welcome.GuideActivity" />
-        <activity android:name=".ui.choosecar.ChooseCarActivity">
+        <activity android:name=".ui.citychoice.CityChoiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,8 +42,8 @@
             </intent-filter>
         </activity>
 
-        <!--引导页-->
-        <activity android:name=".ui.citychoice.CityChoiceActivity"/>
+
+        <activity android:name=".ui.welcome.WelcomeActivity"/>
 
         <!--百度定位SDK-->
         <service

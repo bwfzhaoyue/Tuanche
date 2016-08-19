@@ -11,12 +11,13 @@ public class LocationCityBean {
 //            "py": "cd",
 //            "openStatus": 1
 
-    private String id;//156
-    private String name;//成都
-    private String pinyin;//chengdu
-    private String py;//cd
-    private String openStatus;//1
+    public String id;//156
+    public String name;//成都
+    public String pinyin;//chengdu
+    public String py;//cd
+    public String openStatus;//1
 
+    
     @Override
     public String toString() {
         return "LocationCityBean{" +

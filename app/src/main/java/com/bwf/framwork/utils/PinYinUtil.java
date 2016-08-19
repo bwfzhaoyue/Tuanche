@@ -40,11 +40,11 @@ public class PinYinUtil {
             try {
                 pinyinName += PinyinHelper.toHanyuPinyinStringArray(name, defaultFormat)[0].charAt(0);
             } catch (Exception e) {
-                pinyinName = "#";
+                pinyinName = "z";
                 e.printStackTrace();
             }
         } else {
-            pinyinName = "#";
+            pinyinName = "z";
         }
 
         return pinyinName;
