@@ -95,7 +95,7 @@ public class TypeListExpandAdapter extends BaseExpandableListAdapter{
         view = View.inflate(context, R.layout.item_parent_letter,null);
         TextView tv_letter = (TextView) view.findViewById(R.id.tv_letter);
         tv_letter.setText(groupList.get(i).penname);
-        LogUtils.e("getGroupView===>"+groupList.get(i).penname);
+//        LogUtils.e("getGroupView===>"+groupList.get(i).penname);
         return view;
     }
 
@@ -114,7 +114,7 @@ public class TypeListExpandAdapter extends BaseExpandableListAdapter{
 
         imageLoader.disPlayImage(viewHolder.img_elv_logo,groupList.get(i).typeBeanList.get(i1).logo);
         viewHolder.tv_elv_name.setText(groupList.get(i).typeBeanList.get(i1).name);
-        LogUtils.e("getChildView===>"+groupList.get(i).typeBeanList.get(i1).name);
+//        LogUtils.e("getChildView===>"+groupList.get(i).typeBeanList.get(i1).name);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

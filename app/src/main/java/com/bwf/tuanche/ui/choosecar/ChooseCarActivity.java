@@ -19,6 +19,7 @@ import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
@@ -35,6 +36,7 @@ import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeBean;
 import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeListResult;
 import com.bwf.tuanche.view.ChooseCarPopWindow;
 import com.bwf.tuanche.view.LoadingView;
+import com.bwf.tuanche.view.refresh.RefreshTestActivity;
 
 import java.util.ArrayList;
 
@@ -97,7 +99,7 @@ public class ChooseCarActivity extends BaseActivity {
 
     @Override
     public void beforeInitView() {
-
+        IntentUtils.openActivity(this, RefreshTestActivity.class);
     }
 
     @Override
@@ -159,21 +161,6 @@ public class ChooseCarActivity extends BaseActivity {
                 exlv_brandlist.setSelectedGroup(i-1);
             }
         });
-//        ArrayList<String> list = new ArrayList<>();
-//        list.add("*");
-//        list.add("A");
-//        list.add("B");
-//        list.add("C");
-//        list.add("D");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        indexAdapter.settList(list);
-//        indexAdapter.notifyDataSetChanged();
 
         //热门品牌的RecyclerView点击回调
         recyclerAdapter.setCallBack(new HotTypeRecyclerAdapter.HotBrandCallBack() {
@@ -366,7 +353,23 @@ public class ChooseCarActivity extends BaseActivity {
                 levelRecyclerAdapter.notifyDataSetChanged();
                 break;
             case R.id.bt_check://查看
-
+                StringBuilder info = new StringBuilder();
+                info.append("==>级别信息：\n");
+                for (int i = 0;i < bosRecyclerAdapter.getItemCount();i++){
+                    if (bosRecyclerAdapter.getList().get(i).isSelected)
+                        info.append(bosRecyclerAdapter.getList().get(i).name+"+");
+                }
+                info.append("\n==>国别信息：\n");
+                for (int i = 0;i < seriesRecyclerAdapter.getItemCount();i++){
+                    if (seriesRecyclerAdapter.getList().get(i).isSelected)
+                        info.append(seriesRecyclerAdapter.getList().get(i).name+"+");
+                }
+                info.append("\n==>排量信息：\n");
+                for (int i = 0;i < levelRecyclerAdapter.getItemCount();i++){
+                    if (levelRecyclerAdapter.getList().get(i).isSelected)
+                        info.append(levelRecyclerAdapter.getList().get(i).name+"+");
+                }
+                ToastUtil.showToast(info.toString());
                 break;
         }
     }
