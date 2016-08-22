@@ -16,12 +16,12 @@
             android:padding="10dp"
             android:src="@mipmap/icon_back"/>
         <TextView
-            android:id="@+id/city_title"
+            android:id="@+id/tvcity_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/citychoice"
-            android:textColor="@android:color/black"
+            android:textColor="@color/blackban"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
@@ -32,7 +32,8 @@
         android:background="@color/grayxian"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -47,14 +48,13 @@
                 android:layout_height="1dp"
                 android:background="@color/grayxian"/>
             <TextView
-                android:id="@+id/tv_location"
+                android:id="@+id/tvcity_location"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:textColor="@android:color/black"
-                android:textSize="16dp"
+                android:textColor="@color/blackban"
                 android:paddingLeft="15dp"
                 android:gravity="center_vertical"
-                android:text="定位..."/>
+                android:text="定位中..."/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -76,12 +76,12 @@
                     android:id="@+id/tvcity_zb1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="城市1"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -89,13 +89,13 @@
                     android:id="@+id/tvcity_zb2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="城市2"
                     android:gravity="center"
                     android:layout_weight="1"/>
 
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -103,12 +103,12 @@
                     android:id="@+id/tvcity_zb3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="城市3"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -116,12 +116,12 @@
                     android:id="@+id/tvcity_zb4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="城市4"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
@@ -142,12 +142,12 @@
                     android:id="@+id/tvcity_rm1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门1"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -155,13 +155,13 @@
                     android:id="@+id/tvcity_rm2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门2"
                     android:gravity="center"
                     android:layout_weight="1"/>
 
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -169,12 +169,12 @@
                     android:id="@+id/tvcity_rm3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门3"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -182,12 +182,12 @@
                     android:id="@+id/tvcity_rm4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门4"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
@@ -203,12 +203,12 @@
                     android:id="@+id/tvcity_rm5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门5"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -216,12 +216,12 @@
                     android:id="@+id/tvcity_rm6"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门6"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -229,12 +229,12 @@
                     android:id="@+id/tvcity_rm7"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门7"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/grayxian"/>
@@ -242,12 +242,12 @@
                     android:id="@+id/tvcity_rm8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/blackban"
                     android:text="热门8"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
@@ -256,7 +256,7 @@
                 android:layout_height="1dp"
                 android:background="@color/grayxian"/>
             <LinearLayout
-                android:id="@+id/ll_citisy"
+                android:id="@+id/ll_citysy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
