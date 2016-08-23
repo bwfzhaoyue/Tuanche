@@ -103,7 +103,7 @@ public class ChooseCarActivity extends BaseActivity {
 
     @Override
     public void beforeInitView() {
-//        IntentUtils.openActivity(this, RefreshTestActivity.class);
+        IntentUtils.openActivity(this, RefreshTestActivity.class);
         cityId = getIntent().getStringExtra("cityId");
         if (TextUtils.isEmpty(cityId))
             cityId =  "156";//默认成都
