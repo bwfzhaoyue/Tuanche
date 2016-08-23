@@ -46,6 +46,10 @@ public class TypeListExpandAdapter extends BaseExpandableListAdapter{
         this.groupList = groupList;
     }
 
+    public List<TypeBeanGroup> getGroupList() {
+        return groupList;
+    }
+
     @Override
     public int getGroupCount() {
         return groupList==null?0:groupList.size();
@@ -55,6 +59,25 @@ public class TypeListExpandAdapter extends BaseExpandableListAdapter{
     public int getChildrenCount(int i) {
 
         return groupList.get(i).typeBeanList==null?0:groupList.get(i).typeBeanList.size();
+    }
+
+    /**
+     *  根据这是第几个Item得到他是第几个Group，包括该Item就是GroupItem的情况。
+     * @param itemNum 不考虑HeaderView，所以如果有HeaderView，在传itemNum参数之前要先减去HeaderView的数量
+     * @return
+     */
+    public int getGroupNumFromItemNum(int itemNum){
+        if (groupList == null)//先判空
+            return 0;
+        int groupNum = 0;
+        for (int i = 0;i<groupList.size();i++){
+            itemNum --;//每一个集合 先减去group的数量，即1
+            itemNum -= (groupList.get(i).typeBeanList ==null)?0:groupList.get(i).typeBeanList.size();
+            if (itemNum<0)
+                break;
+            groupNum ++;
+        }
+        return groupNum;
     }
 
     @Override
@@ -95,6 +118,7 @@ public class TypeListExpandAdapter extends BaseExpandableListAdapter{
         view = View.inflate(context, R.layout.item_parent_letter,null);
         TextView tv_letter = (TextView) view.findViewById(R.id.tv_letter);
         tv_letter.setText(groupList.get(i).penname);
+        view.setClickable(false);
 //        LogUtils.e("getGroupView===>"+groupList.get(i).penname);
         return view;
     }
