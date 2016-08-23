@@ -18,11 +18,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseActivity;
-import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
 import com.bwf.framwork.utils.IntentUtils;
-import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.choosecar.adapter.BosRecyclerAdapter;
@@ -109,6 +107,7 @@ public class ChooseCarActivity extends BaseActivity {
         cityId = getIntent().getStringExtra("cityId");
         if (TextUtils.isEmpty(cityId))
             cityId =  "156";//默认成都
+        IntentUtils.openActivity(this, RefreshTestActivity.class);
     }
 
     @Override

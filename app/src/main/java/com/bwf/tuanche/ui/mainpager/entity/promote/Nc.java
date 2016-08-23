@@ -21,6 +21,8 @@ public class Nc {
 
     public String is_login;
 
+    public String url;
+
     @Override
     public String toString() {
         return "Nc{" +
@@ -32,6 +34,7 @@ public class Nc {
                 ", type='" + type + '\'' +
                 ", modules='" + modules + '\'' +
                 ", is_ng='" + is_ng + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

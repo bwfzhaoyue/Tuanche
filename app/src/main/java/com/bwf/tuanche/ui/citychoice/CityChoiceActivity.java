@@ -1,14 +1,9 @@
 package com.bwf.tuanche.ui.citychoice;
 
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.Html;
-import android.text.TextPaint;
 import android.util.Log;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,6 +16,7 @@ import com.baidu.location.Poi;
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.ListViewUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.PinYinUtil;
@@ -31,6 +27,7 @@ import com.bwf.tuanche.ui.citychoice.bean.OpenCitysBean;
 import com.bwf.tuanche.ui.citychoice.bean.ResultCityBean;
 import com.bwf.tuanche.ui.citychoice.bean.ResultLocationCityBean;
 import com.bwf.tuanche.ui.citychoice.callback.BackLocation;
+import com.bwf.tuanche.ui.mainpager.MainPagerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,7 +126,7 @@ public class CityChoiceActivity extends BaseActivity implements BackLocation,Vie
 
     @Override
     public void initData() {
-
+        setOnClick(tvcity_location);
         getCitySYData();
 
 
@@ -177,7 +174,11 @@ public class CityChoiceActivity extends BaseActivity implements BackLocation,Vie
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.tvcity_location:
+                IntentUtils.openActivity(this, MainPagerActivity.class);
+                break;
+        }
     }
 
     //热门城市数据

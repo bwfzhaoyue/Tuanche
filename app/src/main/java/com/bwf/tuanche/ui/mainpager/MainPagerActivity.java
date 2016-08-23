@@ -1,12 +1,16 @@
 package com.bwf.tuanche.ui.mainpager;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.ui.choosecar.ChooseCarActivity;
 import com.bwf.tuanche.ui.mainpager.entity.BannerResult;
 import com.bwf.tuanche.ui.mainpager.entity.hotbrand.HotBrandResultBean;
 import com.bwf.tuanche.ui.mainpager.entity.hotmodle.HotModleResultBean;
@@ -22,8 +26,8 @@ public class MainPagerActivity extends BaseActivity {
     private HotBrandFragment frag_hot_brand;
     private BannerFragment frag_banner;
     private HotModleFragment frag_hot_modle;
-
-    private int cityId = 156;
+    private ImageView img_labe;
+    private String cityId = "156";
     private int count = 10;
     private int offset = 0;
     private int isBuy = 2;
@@ -34,6 +38,7 @@ public class MainPagerActivity extends BaseActivity {
 
     @Override
     public void beforeInitView() {
+//        cityId=getIntent().getStringExtra("cityId");
         getTopBrandData();
         getBrand();
         getBanner();
@@ -46,20 +51,29 @@ public class MainPagerActivity extends BaseActivity {
         frag_hot_brand = (HotBrandFragment) getSupportFragmentManager().findFragmentById(R.id.frag_hot_brand);
         frag_banner = (BannerFragment) getSupportFragmentManager().findFragmentById(R.id.frag_banner);
         frag_hot_modle = (HotModleFragment) getSupportFragmentManager().findFragmentById(R.id.frag_hot_modle);
+        img_labe = findViewByIdNoCast(R.id.img_labe);
     }
 
     @Override
     public void initData() {
-
+        frag_promote_tabs.setCityId(cityId);
+        frag_hot_brand.setCityId(cityId);
+        setOnClick(img_labe);
     }
 
     @Override
     public void onClick(View v) {
-
+        Bundle bundle=new Bundle();
+        switch (v.getId()){
+            case R.id.img_labe:
+                bundle.putString("cityId",cityId);
+                IntentUtils.openActivity(this, ChooseCarActivity.class,bundle);
+                break;
+        }
     }
 
     public void getTopBrandData() {
-        HttpHelper.getTopBrand("" + cityId, new HttpCallBack<NcResultBean>() {
+        HttpHelper.getTopBrand(cityId, new HttpCallBack<NcResultBean>() {
 
 
             @Override
@@ -80,7 +94,7 @@ public class MainPagerActivity extends BaseActivity {
      */
 
     public void getHotModleData() {
-        HttpHelper.getHotModle("156", "2", "0", new HttpCallBack<HotModleResultBean>() {
+        HttpHelper.getHotModle(cityId, "20", "10", new HttpCallBack<HotModleResultBean>() {
 
             @Override
             public void onSuccess(HotModleResultBean result) {
@@ -100,7 +114,7 @@ public class MainPagerActivity extends BaseActivity {
      */
 
     public void getBrand() {
-        HttpHelper.getHotBrand("156", "2", new HttpCallBack<HotBrandResultBean>() {
+        HttpHelper.getHotBrand(cityId, "2", new HttpCallBack<HotBrandResultBean>() {
             @Override
             public void onSuccess(HotBrandResultBean result) {
                 if (result != null)
@@ -118,7 +132,7 @@ public class MainPagerActivity extends BaseActivity {
      * 获得首页banner
      */
     public void getBanner() {
-        HttpHelper.getMainBanner("" + cityId, new HttpCallBack<BannerResult>() {
+        HttpHelper.getMainBanner(cityId, new HttpCallBack<BannerResult>() {
 
 
             @Override

@@ -1,0 +1,206 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="@dimen/padding_5"
+    tools:context="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_details_car"
+        android:layout_width="match_parent"
+        fresco:placeholderImage="@mipmap/loading_image_error"
+        fresco:placeholderImageScaleType="centerCrop"
+        android:layout_height="200dp" />
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"/>
+    <LinearLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="45dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_16"
+                android:text="本期已报名"
+                android:textColor="@android:color/black"
+                android:id="@+id/tv_this_per"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/tv_this_num"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/text_16"
+                android:text="35人"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="0.2dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_16"
+                android:text="本期已报名"
+                android:textColor="@android:color/black"
+                android:id="@+id/tv_this_help"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/tv_this_save_money"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/text_16"
+                android:text="35人"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/darker_gray"/>
+   <LinearLayout
+       android:paddingLeft="@dimen/padding_10"
+       android:layout_width="match_parent"
+       android:layout_height="25dp"
+       android:orientation="horizontal"
+       android:background="@android:color/white">
+       <TextView
+           android:textSize="@dimen/text_14"
+           android:textColor="@android:color/black"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:text="团购时间: "
+           android:textStyle="bold"
+           android:gravity="center_vertical"
+           android:background="@android:color/white"
+           android:layout_height="match_parent" />
+       <TextView
+           android:id="@+id/tv_tuan_time"
+           android:layout_width="0dp"
+           android:layout_weight="2"
+           android:paddingLeft="@dimen/padding_5"
+           android:textSize="@dimen/text_14"
+           android:gravity="center_vertical"
+           android:textColor="@android:color/black"
+           android:layout_height="match_parent" />
+
+       <TextView
+           android:text="具体时间以团长通知为准"
+           android:id="@+id/tv_tuan_time_notice"
+           android:layout_width="0dp"
+           android:layout_weight="2"
+           android:paddingLeft="@dimen/padding_5"
+           android:textSize="8sp"
+           android:gravity="center_vertical"
+           android:textColor="@android:color/darker_gray"
+           android:layout_height="match_parent" />
+   </LinearLayout>
+    <LinearLayout
+        android:paddingLeft="@dimen/padding_10"
+        android:orientation="horizontal"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:weightSum="5"
+        android:layout_height="25dp">
+        <TextView
+            android:textSize="@dimen/text_14"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:text="团购地点: "
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_tuan_address"
+            android:paddingLeft="@dimen/padding_5"
+            android:textSize="@dimen/text_14"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="@dimen/padding_10"
+        android:orientation="horizontal"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:weightSum="5"
+        android:layout_height="25dp">
+        <TextView
+            android:textSize="@dimen/text_14"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="团购价格: "
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_tuan_price"
+            android:textSize="@dimen/text_14"
+            android:textColor="@android:color/black"
+            android:text="现场公布"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:paddingLeft="@dimen/padding_5"
+            android:drawableRight="@mipmap/icon_help"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <EditText
+        android:paddingLeft="@dimen/padding_10"
+        android:layout_margin="@dimen/padding_5"
+        android:id="@+id/et_customer_phone"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:inputType="number"
+        android:hint="请输入手机号"
+        android:focusable="false"
+        android:textColorHint="@android:color/darker_gray"
+        android:background="@drawable/cornersshape_edit"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/text_16"/>
+    <EditText
+        android:paddingLeft="@dimen/padding_10"
+        android:layout_margin="@dimen/padding_5"
+        android:id="@+id/et_customer_name"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:inputType="textPersonName"
+        android:hint="请输入姓名"
+        android:focusable="false"
+        android:textColorHint="@android:color/darker_gray"
+        android:background="@drawable/cornersshape_edit"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/text_16"/>
+</LinearLayout>
