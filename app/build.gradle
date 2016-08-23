@@ -19,8 +19,15 @@ android {
     }
     sourceSets {
 //        main { res.srcDirs = ['src/main/res', 'src/main/res/drawable', 'src/main/res/anim'] }
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res/drawable', 'src/main/res/anim']
+            resources.srcDirs = ['src/main/resources', 'src/main/resources/drawable']
+            jniLibs.srcDirs = ['libs']
+        }
     }
+
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

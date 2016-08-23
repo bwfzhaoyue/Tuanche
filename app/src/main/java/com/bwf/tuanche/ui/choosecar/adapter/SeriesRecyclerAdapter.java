@@ -47,6 +47,10 @@ public class SeriesRecyclerAdapter extends RecyclerView.Adapter<SeriesRecyclerAd
         this.list = list;
     }
 
+    public List<SeriesBean> getList() {
+        return list;
+    }
+
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(context, R.layout.item_series_recycler,null);

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bwf.framwork.base.BaseFragment;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.ui.choosecar.ChooseCarActivity;
 import com.bwf.tuanche.ui.mainpager.CenterBannerDetailActivity;
 import com.bwf.tuanche.ui.mainpager.entity.BannerResult;
 import com.bwf.tuanche.ui.mainpager.entity.promote.NcResultBean;
@@ -29,6 +30,7 @@ public class PromoteAndTabFragment extends BaseFragment {
     private NcResultBean result;
 
     private BannerResult bannerResult;
+    private String cityId;
 
     @Override
     protected int getResource() {
@@ -37,7 +39,6 @@ public class PromoteAndTabFragment extends BaseFragment {
 
     @Override
     protected void beforeInitView() {
-
     }
 
     @Override
@@ -63,7 +64,7 @@ public class PromoteAndTabFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        setOnClick(ll_lpbuycar, ll_carsticker, ll_newmodle, ll_compareBX);
+        setOnClick(ll_lpbuycar, ll_carsticker, ll_newmodle, ll_compareBX,vp_promote);
         if (result != null) {
             img_lpbuycar.setImageURI(Uri.parse(result.result.nc.get(0).pic));
             img_carsticker.setImageURI(Uri.parse(result.result.nc.get(1).pic));
@@ -84,6 +85,8 @@ public class PromoteAndTabFragment extends BaseFragment {
         Bundle bundle=new Bundle();
         switch (view.getId()) {
             case R.id.ll_lpbuycar:
+                bundle.putString("cityId",cityId);
+                IntentUtils.openActivity(getActivity(), ChooseCarActivity.class,bundle);
                 break;
             case R.id.ll_carsticker:
                 bundle.putString("shareUrl",result.result.nc.get(1).url);
@@ -97,6 +100,10 @@ public class PromoteAndTabFragment extends BaseFragment {
                 bundle.putString("adName",result.result.nc.get(3).name);
                 IntentUtils.openActivity(getActivity(), CenterBannerDetailActivity.class,bundle);
                 break;
+            case R.id.vp_promote:
+                bundle.putString("cityId",cityId);
+                IntentUtils.openActivity(getActivity(), CenterBannerDetailActivity.class,bundle);
+                break;
         }
     }
 
@@ -108,5 +115,9 @@ public class PromoteAndTabFragment extends BaseFragment {
     public void setBannerResult(BannerResult bannerResult) {
         this.bannerResult = bannerResult;
         initData();
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 }

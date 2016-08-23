@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.ui.choosecar.ChooseCarActivity;
 import com.bwf.tuanche.ui.mainpager.HotModleAndBrandDetailsActivity;
 import com.bwf.tuanche.ui.mainpager.entity.hotbrand.HotBrandResultBean;
 import com.bwf.tuanche.ui.mainpager.entity.hotbrand.ListHotBrand;
@@ -23,6 +24,7 @@ public class HotBrandAdpter extends RecyclerView.Adapter<HotBrandAdpter.ViewHold
 
 
     private Activity activity;
+    private String cityId;
 
     public HotBrandAdpter(Activity activity) {
         this.activity = activity;
@@ -49,30 +51,32 @@ public class HotBrandAdpter extends RecyclerView.Adapter<HotBrandAdpter.ViewHold
             ListHotBrand brand = result.get(position);
             holder.img_brand.setImageURI(brand.logo);
             holder.tv_brand_name.setText(brand.name);
-            String num="有<font color='red'>"+brand.baseNum+"</font>人报名";
-            holder.tv_login_num.setText( Html.fromHtml(num));
+            String num = "有<font color='red'>" + brand.baseNum + "</font>人报名";
+            holder.tv_login_num.setText(Html.fromHtml(num));
         }
         holder.ll_hot_band.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (position == result.size()){
-
-                }
-                else {
-                    Bundle bundle=new Bundle();
-                    bundle.putInt("type",2);
-                    bundle.putString("firmbrandId",result.get(position).id);
-                    bundle.putString("cityId","156");
-                    IntentUtils.openActivity(activity, HotModleAndBrandDetailsActivity.class,bundle);
+                Bundle bundle = new Bundle();
+                bundle.putString("cityId", cityId);
+                if (position == result.size()) {
+                    IntentUtils.openActivity(activity, ChooseCarActivity.class, bundle);
+                } else {
+                    bundle.putInt("type", 2);
+                    bundle.putString("firmbrandId", result.get(position).id);
+                    IntentUtils.openActivity(activity, HotModleAndBrandDetailsActivity.class, bundle);
                 }
             }
         });
     }
 
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
 
 
     public int getItemCount() {
-        return result == null ? 0 : result.size()+1 ;
+        return result == null ? 0 : result.size() + 1;
     }
 
     private List<ListHotBrand> result;
@@ -86,6 +90,7 @@ public class HotBrandAdpter extends RecyclerView.Adapter<HotBrandAdpter.ViewHold
         public TextView tv_brand_name;
         public TextView tv_login_num;
         public LinearLayout ll_hot_band;
+
         public ViewHolder(View itemView) {
             super(itemView);
         }

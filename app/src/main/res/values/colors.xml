@@ -5,11 +5,19 @@
     <color name="colorAccent">#FF4081</color>
     <color name="light_gray">#DDDDDD</color>
     <color name="gray">#999999</color>
+    <color name="text_gray">#777777</color>
     <color name="blue">#017DD3</color>
 
     <color name="title_red">#FF3939</color>
     <color name="title_red_touming">#77FF3939</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="blackban">#BF000000</color>
+    <color name="grayfenge">#dddddd</color>
+    <color name="line_color">#969696</color>
+    <color name="loginBackground">#FEF0EF</color>
+    <color name="little_red">#FEBAB9</color>
+    <color name="grayxian">#919090</color>
+    <color name="graylinexian">#4f919090</color>
 
 </resources>
