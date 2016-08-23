@@ -2,6 +2,7 @@ package com.bwf.tuanche.ui.mainpager;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bwf.framwork.base.BaseActivity;
@@ -37,6 +38,8 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
     private BuyingCarEvaluteFragment frag_tuanche_evalute;
     private CommenProblemFragment frag_tuanche_commen_problem;
 
+    private TextView tv_car_brand,tv_car_city;
+
     @Override
     public int getContentViewId() {
         return R.layout.activity_hot_modle_and_brand_details;
@@ -62,6 +65,8 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
     @Override
     public void initView() {
         img_retrun=findViewByIdNoCast(R.id.img_retrun);
+        tv_car_city=findViewByIdNoCast(R.id.tv_car_city);
+        tv_car_brand=findViewByIdNoCast(R.id.tv_car_brand);
         setToBack(img_retrun);
         frag_img_customer = (ImageAndCustomerFragment) getSupportFragmentManager().findFragmentById(R.id.frag_img_customer);
         frag_tuanche_promise = (TuanChePromiseFragment) getSupportFragmentManager().findFragmentById(R.id.frag_tuanche_promise);
@@ -72,7 +77,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        tv_car_city.setText("成都站");
     }
 
     @Override
@@ -92,6 +97,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                     frag_img_customer.setResult(result);
                     LogUtils.e("", result.toString());
                     frag_tuanche_evalute.setResult( result.result);
+                    tv_car_brand.setText(result.result.styleName+"-");
                     String tcbzDesc = result.result.tcbzDesc;
                     List<PromiseCar> carList = JSON.parseArray(tcbzDesc.replace("\\",""),PromiseCar.class);
                     if (carList != null)
