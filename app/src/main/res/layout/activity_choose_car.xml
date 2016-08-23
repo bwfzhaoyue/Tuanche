@@ -72,13 +72,30 @@
             android:background="@color/light_gray"
             android:visibility="visible">
 
-            <ExpandableListView
-                android:id="@+id/exlv_brandlist"
+            <RelativeLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/white"
-                android:scrollbars="none"/>
+                android:layout_height="match_parent">
+
+                <ExpandableListView
+                    android:id="@+id/exlv_brandlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:scrollbars="none"/>
+
+                <TextView
+                    android:id="@+id/tv_letter"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:background="@color/light_gray"
+                    android:textColor="@color/black"
+                    android:text="0"
+                    android:paddingLeft="5dp"/>
+
+            </RelativeLayout>
+
 
             <ListView
                 android:id="@+id/lv_index"
