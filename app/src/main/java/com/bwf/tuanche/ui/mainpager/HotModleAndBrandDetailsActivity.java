@@ -123,6 +123,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                 if (result != null) {
                     LogUtils.e("result:", result.toString());
                     frag_img_customer.setResult(result);
+                    tv_car_brand.setText(result.result.styleName+"-");
                     frag_tuanche_evalute.setResult(result.result);
                     String tcbzDesc = result.result.tcbzDesc;
                     List<PromiseCar> carList = JSON.parseArray(tcbzDesc.replace("\\",""),PromiseCar.class);

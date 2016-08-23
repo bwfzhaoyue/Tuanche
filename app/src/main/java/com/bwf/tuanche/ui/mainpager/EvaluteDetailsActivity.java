@@ -13,6 +13,7 @@ import com.bwf.framwork.http.HttpHelper;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.mainpager.entity.evalutedetails.EvaluteResultBean;
 import com.bwf.tuanche.ui.mainpager.fragment.adpter.BuyingCarEvaluteAdapter;
+import com.bwf.tuanche.view.refresh.PullableScrollView;
 
 public class EvaluteDetailsActivity extends BaseActivity {
 
@@ -32,6 +33,8 @@ public class EvaluteDetailsActivity extends BaseActivity {
     private String cityId="156";
 
     private String brandId;
+
+    private PullableScrollView scroView_evalute;
 
     @Override
     public int getContentViewId() {
@@ -53,7 +56,7 @@ public class EvaluteDetailsActivity extends BaseActivity {
         tv_evalute_detail_score=findViewByIdNoCast(R.id.tv_evalute_detail_score);
         ratingBar_evalute_details=findViewByIdNoCast(R.id.ratingBar_evalute_details);
         img_evalute_details_back=findViewByIdNoCast(R.id.img_evalute_details_back);
-
+        scroView_evalute=findViewByIdNoCast(R.id.scroView_evalute);
     }
 
     @Override
