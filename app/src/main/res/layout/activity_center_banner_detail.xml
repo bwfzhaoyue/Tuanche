@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="com.bwf.tuanche.ui.mainpager.CenterBannerDetailActivity">
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <ImageView
+            android:id="@+id/img_back_banner"
+            android:padding="@dimen/padding_10"
+            android:layout_width="40dp"
+            android:src="@mipmap/icon_back"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_banner_title"
+            android:textSize="@dimen/text_18"
+            android:text="团车"
+            android:padding="@dimen/padding_5"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:padding="@dimen/padding_5"
+            android:id="@+id/wb_banner_center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ScrollView>
+</LinearLayout>

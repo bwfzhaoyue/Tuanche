@@ -80,7 +80,7 @@ public class MainPagerActivity extends BaseActivity {
      */
 
     public void getHotModleData() {
-        HttpHelper.getHotModle("156", "2", "0", new HttpCallBack<HotModleResultBean>() {
+        HttpHelper.getHotModle("156", "20", "10", new HttpCallBack<HotModleResultBean>() {
 
             @Override
             public void onSuccess(HotModleResultBean result) {

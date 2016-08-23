@@ -3,6 +3,7 @@ package com.bwf.tuanche.ui.mainpager.fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseFragment;
 import com.bwf.tuanche.R;
@@ -13,6 +14,8 @@ import com.bwf.tuanche.ui.mainpager.fragment.adpter.HotModleAdpter;
 public class HotModleFragment extends BaseFragment {
 
     private RecyclerView rev_hot_brand_frag;
+
+    private TextView tv_hot_brand_frag;
 
     private HotModleResultBean result;
 
@@ -30,11 +33,12 @@ public class HotModleFragment extends BaseFragment {
     @Override
     protected void initView(View rootView) {
         rev_hot_brand_frag=findViewByIdNoCast(R.id.rev_hot_brand_frag);
+        tv_hot_brand_frag=findViewByIdNoCast(R.id.tv_hot_brand_frag);
     }
 
     @Override
     protected void initData() {
-
+        tv_hot_brand_frag.setText("热门车型");
     }
 
     @Override

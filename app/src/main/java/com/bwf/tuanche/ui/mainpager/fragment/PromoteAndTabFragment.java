@@ -2,13 +2,16 @@ package com.bwf.tuanche.ui.mainpager.fragment;
 
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseFragment;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.ui.mainpager.CenterBannerDetailActivity;
 import com.bwf.tuanche.ui.mainpager.entity.BannerResult;
 import com.bwf.tuanche.ui.mainpager.entity.promote.NcResultBean;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -78,14 +81,21 @@ public class PromoteAndTabFragment extends BaseFragment {
 
     @Override
     public void onClick(View view) {
+        Bundle bundle=new Bundle();
         switch (view.getId()) {
             case R.id.ll_lpbuycar:
                 break;
             case R.id.ll_carsticker:
+                bundle.putString("shareUrl",result.result.nc.get(1).url);
+                bundle.putString("adName",result.result.nc.get(1).name);
+                IntentUtils.openActivity(getActivity(), CenterBannerDetailActivity.class,bundle);
                 break;
             case R.id.ll_newmodle:
                 break;
             case R.id.ll_compareBX:
+                bundle.putString("shareUrl",result.result.nc.get(3).url);
+                bundle.putString("adName",result.result.nc.get(3).name);
+                IntentUtils.openActivity(getActivity(), CenterBannerDetailActivity.class,bundle);
                 break;
         }
     }

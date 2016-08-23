@@ -16,12 +16,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".ui.mainpager.MainPagerActivity"/>
-        <activity android:name=".ui.welcome.WelcomeActivity"></activity>
+        <activity android:name=".ui.welcome.WelcomeActivity" />
+        <activity android:name=".ui.choosecar.ChooseCarActivity" />
 
         <!-- 引导页 -->
         <activity android:name=".ui.welcome.GuideActivity" />
-        <activity android:name=".ui.choosecar.ChooseCarActivity">
+        <activity android:name=".ui.mainpager.MainPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,13 @@
             </intent-filter>
         </activity>
 
-        <!--引导页-->
+        <!-- 引导页 -->
+        <activity
+            android:name=".ui.mainpager.HotModleAndBrandDetailsActivity"
+            android:configChanges="keyboardHidden" />
+        <activity android:name=".ui.mainpager.CenterBannerDetailActivity" />
+        <activity android:name=".ui.mainpager.MarrigeCarActivity" />
+        <activity android:name=".ui.mainpager.EvaluteDetailsActivity"></activity>
     </application>
 
 </manifest>
