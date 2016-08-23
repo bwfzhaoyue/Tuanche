@@ -7,8 +7,8 @@ import com.bwf.tuanche.view.MyVerticalScollView;
 
 public class PullableScrollView extends MyVerticalScollView implements Pullable
 {
-	private boolean canRefresh;//能下拉刷新
-	private boolean canLoadMore;//能加载更多
+	private boolean canRefresh=true;//能下拉刷新
+	private boolean canLoadMore=true;//能加载更多
 
 	public void setCanRefresh(boolean canRefresh) {
 		this.canRefresh = canRefresh;
