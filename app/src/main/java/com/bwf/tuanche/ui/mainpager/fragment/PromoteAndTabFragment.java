@@ -102,7 +102,7 @@ public class PromoteAndTabFragment extends BaseFragment {
                 break;
             case R.id.vp_promote:
                 bundle.putString("cityId",cityId);
-                IntentUtils.openActivity(getActivity(), CenterBannerDetailActivity.class,bundle);
+                IntentUtils.openActivity(getActivity(), ChooseCarActivity.class,bundle);
                 break;
         }
     }
