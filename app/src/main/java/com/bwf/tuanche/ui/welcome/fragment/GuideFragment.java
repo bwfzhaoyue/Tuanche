@@ -18,7 +18,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 public class GuideFragment extends BaseFragment {
 
     private int position;
-    private ImageView img_kaiqi;
+    private ImageView img_kaiqi,img_guide;
+
 
     public static GuideFragment newInstance(int position){
         GuideFragment guideFragment = new GuideFragment();
@@ -38,13 +39,18 @@ public class GuideFragment extends BaseFragment {
     @Override
     protected void initView(View rootView) {
         img_kaiqi = findViewByIdNoCast(R.id.img_kaiqi);
+        img_guide = findViewByIdNoCast(R.id.img_guide);
     }
 
     @Override
     protected void initData() {
         setOnClick(R.id.img_kaiqi);
         switch (position){
+            case 0:
+                img_guide.setImageResource(R.mipmap.guide01);
+                break;
             case 1:
+                img_guide.setImageResource(R.mipmap.guide02);
                 img_kaiqi.setVisibility(View.VISIBLE);
                 break;
         }

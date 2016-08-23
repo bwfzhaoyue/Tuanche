@@ -15,4 +15,5 @@
     <string name="bos">排量</string>
     <string name="password">请输入密码</string>
     <string name="login">登录</string>
+    <string name="update_version_num">V%s</string>
 </resources>

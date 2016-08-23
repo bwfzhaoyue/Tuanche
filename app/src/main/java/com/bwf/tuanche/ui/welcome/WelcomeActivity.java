@@ -48,7 +48,7 @@ public class WelcomeActivity extends BaseActivity implements Handler.Callback{
                 if (SharePrefreceHelper.getInstence(WelcomeActivity.this).isFirst())
                     IntentUtils.openActivity(WelcomeActivity.this,GuideActivity.class);
                 else
-                    IntentUtils.openActivity(WelcomeActivity.this,CityChoiceActivity.class);
+                    IntentUtils.openActivity(WelcomeActivity.this,MainPagerActivity.class);
                 finish();
                 break;
         }

@@ -32,10 +32,11 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".ui.mainpager.MainPagerActivity"/>
         <activity android:name=".ui.choosecar.ChooseCarActivity"></activity>
-        <activity android:name=".ui.welcome.WelcomeActivity" />
+
+        <activity android:name=".ui.citychoice.CityChoiceActivity"/>
 
         <activity android:name=".ui.welcome.GuideActivity" />
-        <activity android:name=".ui.citychoice.CityChoiceActivity">
+        <activity android:name=".ui.welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
