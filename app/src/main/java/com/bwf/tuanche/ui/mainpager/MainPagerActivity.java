@@ -21,6 +21,7 @@ import com.bwf.tuanche.ui.mainpager.fragment.BannerFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.HotModleFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment;
+import com.bwf.tuanche.view.refresh.PullToRefreshLayout;
 import com.bwf.tuanche.view.refresh.PullableScrollView;
 
 public class MainPagerActivity extends BaseActivity {
@@ -32,10 +33,12 @@ public class MainPagerActivity extends BaseActivity {
     private ImageView img_labe;
     private String cityId = "156";
     private PullableScrollView scroView_main;
+    private PullToRefreshLayout scr_mainpager;
     private TextView tv_location;
     private int count = 10;
     private int offset = 0;
     private int isBuy = 2;
+    private boolean brand, topBrand, banner, modle;
 
     public int getContentViewId() {
         return R.layout.activity_main_pager;
@@ -59,22 +62,51 @@ public class MainPagerActivity extends BaseActivity {
         img_labe = findViewByIdNoCast(R.id.img_labe);
         tv_location = findViewByIdNoCast(R.id.tv_location);
         scroView_main = findViewByIdNoCast(R.id.scroView_main);
+        scr_mainpager = findViewByIdNoCast(R.id.scr_mainpager);
     }
 
     @Override
     public void initData() {
         frag_promote_tabs.setCityId(cityId);
         frag_hot_brand.setCityId(cityId);
-        setOnClick(img_labe,tv_location);
+        scroView_main.setCanLoadMore(false);
+        setOnClick(img_labe, tv_location);
+        scr_mainpager.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
+                getTopBrandData();
+                getBrand();
+                getBanner();
+                getHotModleData();
+
+
+                pullToRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!brand && !topBrand && !banner && !modle) {
+                            pullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
+                        } else
+                            pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+                    }
+                }, 2000);
+
+
+            }
+
+            @Override
+            public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
-        Bundle bundle=new Bundle();
-        switch (v.getId()){
+        Bundle bundle = new Bundle();
+        switch (v.getId()) {
             case R.id.img_labe:
-                bundle.putString("cityId",cityId);
-                IntentUtils.openActivity(this, ChooseCarActivity.class,bundle);
+                bundle.putString("cityId", cityId);
+                IntentUtils.openActivity(this, ChooseCarActivity.class, bundle);
                 break;
             case R.id.tv_location:
                 IntentUtils.openActivity(this, CityChoiceActivity.class);
@@ -88,13 +120,17 @@ public class MainPagerActivity extends BaseActivity {
 
             @Override
             public void onSuccess(NcResultBean result) {
-                if (result != null)
+                if (result != null) {
+
                     frag_promote_tabs.setResult(result);
+                    topBrand = true;
+                }
             }
 
             @Override
             public void onFail(String errMsg) {
-
+                ToastUtil.showToast(errMsg);
+                topBrand = false;
             }
         });
     }
@@ -108,13 +144,16 @@ public class MainPagerActivity extends BaseActivity {
 
             @Override
             public void onSuccess(HotModleResultBean result) {
-                if (result != null)
+                if (result != null) {
                     frag_hot_modle.setResult(result);
+                    modle = true;
+                }
             }
 
             @Override
             public void onFail(String errMsg) {
                 ToastUtil.showToast(errMsg);
+                modle = false;
             }
         });
     }
@@ -128,12 +167,14 @@ public class MainPagerActivity extends BaseActivity {
             @Override
             public void onSuccess(HotBrandResultBean result) {
                 if (result != null)
-                    frag_hot_brand.setResult(result);
+                    brand = true;
+                frag_hot_brand.setResult(result);
             }
 
             @Override
             public void onFail(String errMsg) {
                 ToastUtil.showToast(errMsg);
+                brand = false;
             }
         });
     }
@@ -150,12 +191,14 @@ public class MainPagerActivity extends BaseActivity {
                 if (result != null) {
                     frag_banner.setResult(result);
                     frag_promote_tabs.setBannerResult(result);
+                    banner = true;
                 }
             }
 
             @Override
             public void onFail(String errMsg) {
                 ToastUtil.showToast(errMsg);
+                banner = false;
             }
         });
     }
