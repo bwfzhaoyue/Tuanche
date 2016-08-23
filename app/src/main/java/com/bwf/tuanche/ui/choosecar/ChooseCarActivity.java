@@ -4,7 +4,9 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ExpandableListView;
@@ -16,10 +18,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseActivity;
-import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
-import com.bwf.framwork.utils.LogUtils;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.choosecar.adapter.BosRecyclerAdapter;
@@ -32,18 +33,21 @@ import com.bwf.tuanche.ui.choosecar.entity.condition.ConditionResult;
 import com.bwf.tuanche.ui.choosecar.entity.hotcar.HotCarTypeBean;
 import com.bwf.tuanche.ui.choosecar.entity.hotcar.HotTypeResult;
 import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeBean;
+import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeBeanGroup;
 import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeListResult;
 import com.bwf.tuanche.view.ChooseCarPopWindow;
 import com.bwf.tuanche.view.LoadingView;
+import com.bwf.tuanche.view.refresh.RefreshTestActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 选车界面 包括品牌选车和条件选车
  */
 public class ChooseCarActivity extends BaseActivity {
 
-    private String cityId = "156";//城市ID 成都156
+    private String cityId;//城市ID 成都156
 
     private ImageView img_back,img_search;//左边返回 右边搜索
 
@@ -81,7 +85,9 @@ public class ChooseCarActivity extends BaseActivity {
 
     private ExpandableListView exlv_brandlist;//二级展开列表
 
-    private TypeListExpandAdapter expandAdapter;//耳机列表适配器
+    private TextView tv_letter;//顶部悬浮框
+
+    private TypeListExpandAdapter expandAdapter;//二级列表适配器
 
     private ChooseCarPopWindow popWindow;//点击车型弹窗
     private RelativeLayout rl_abovepop;//让popWindow显示在他之下
@@ -97,7 +103,11 @@ public class ChooseCarActivity extends BaseActivity {
 
     @Override
     public void beforeInitView() {
-
+        IntentUtils.openActivity(this, RefreshTestActivity.class);
+        cityId = getIntent().getStringExtra("cityId");
+        if (TextUtils.isEmpty(cityId))
+            cityId =  "156";//默认成都
+        IntentUtils.openActivity(this, RefreshTestActivity.class);
     }
 
     @Override
@@ -115,6 +125,8 @@ public class ChooseCarActivity extends BaseActivity {
         recycler_series = findViewByIdNoCast(R.id.recycler_series);
         recycler_level = findViewByIdNoCast(R.id.recycler_level);
         exlv_brandlist = findViewByIdNoCast(R.id.exlv_brandlist);
+        tv_letter = findViewByIdNoCast(R.id.tv_letter);
+        tv_letter.setVisibility(View.GONE);
         bt_reset = findViewByIdNoCast(R.id.bt_reset);
         bt_check = findViewByIdNoCast(R.id.bt_check);
         rl_abovepop = findViewByIdNoCast(R.id.rl_abovepop);
@@ -159,21 +171,6 @@ public class ChooseCarActivity extends BaseActivity {
                 exlv_brandlist.setSelectedGroup(i-1);
             }
         });
-//        ArrayList<String> list = new ArrayList<>();
-//        list.add("*");
-//        list.add("A");
-//        list.add("B");
-//        list.add("C");
-//        list.add("D");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        list.add("F");
-//        indexAdapter.settList(list);
-//        indexAdapter.notifyDataSetChanged();
 
         //热门品牌的RecyclerView点击回调
         recyclerAdapter.setCallBack(new HotTypeRecyclerAdapter.HotBrandCallBack() {
@@ -193,6 +190,32 @@ public class ChooseCarActivity extends BaseActivity {
                 return true;
             }
         });
+        exlv_brandlist.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//                LogUtils.e("firstVisibleItem:"+firstVisibleItem+" totalItemCount:"+totalItemCount);
+                if (firstVisibleItem<=0){//第一个可见的View  包括headerView
+                    tv_letter.setVisibility(View.GONE);
+                    return;
+                }
+                firstVisibleItem -= 1;//去掉HeaderView
+
+                if (expandAdapter==null)
+                    return;
+                List<TypeBeanGroup> groupList = expandAdapter.getGroupList();
+                if (groupList != null){
+//                    LogUtils.e("pennameNum:"+expandAdapter.getGroupNumFromItemNum(firstVisibleItem));
+                    tv_letter.setText(groupList.get(expandAdapter.getGroupNumFromItemNum(firstVisibleItem)).penname);
+                    tv_letter.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         expandAdapter = new TypeListExpandAdapter(this);
         expandAdapter.setCallBack(new TypeListExpandAdapter.ExpandCallBack() {
             @Override
@@ -366,7 +389,23 @@ public class ChooseCarActivity extends BaseActivity {
                 levelRecyclerAdapter.notifyDataSetChanged();
                 break;
             case R.id.bt_check://查看
-
+                StringBuilder info = new StringBuilder();
+                info.append("==>级别信息：\n");
+                for (int i = 0;i < bosRecyclerAdapter.getItemCount();i++){
+                    if (bosRecyclerAdapter.getList().get(i).isSelected)
+                        info.append(bosRecyclerAdapter.getList().get(i).name+"+");
+                }
+                info.append("\n==>国别信息：\n");
+                for (int i = 0;i < seriesRecyclerAdapter.getItemCount();i++){
+                    if (seriesRecyclerAdapter.getList().get(i).isSelected)
+                        info.append(seriesRecyclerAdapter.getList().get(i).name+"+");
+                }
+                info.append("\n==>排量信息：\n");
+                for (int i = 0;i < levelRecyclerAdapter.getItemCount();i++){
+                    if (levelRecyclerAdapter.getList().get(i).isSelected)
+                        info.append(levelRecyclerAdapter.getList().get(i).name+"+");
+                }
+                ToastUtil.showToast(info.toString());
                 break;
         }
     }

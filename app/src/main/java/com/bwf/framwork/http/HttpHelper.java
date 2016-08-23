@@ -1,6 +1,7 @@
 package com.bwf.framwork.http;
 
 
+import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.UrlUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 
@@ -36,18 +37,18 @@ public class HttpHelper {
     }
 
     public static void getMainBanner(String cityId,HttpCallBack callBack){
-        OkHttpUtils.post().url(UrlUtils.MAIN_BANNER_URL).addParams("cityId",cityId).build().execute(callBack);
+        OkHttpUtils.get().url(UrlUtils.MAIN_BANNER_URL).addParams("cityId",cityId).build().execute(callBack);
 
 
     }
     public static void getHotBrand(String cityId,String isBuy,HttpCallBack callBack){
-        OkHttpUtils.post().url(UrlUtils.HOT_BRAND_URL).addParams("cityId",cityId).addParams("isBuy",isBuy).build().execute(callBack);
+        OkHttpUtils.get().url(UrlUtils.HOT_BRAND_URL).addParams("cityId",cityId).addParams("isBuy",isBuy).build().execute(callBack);
 
 
     }
 
     public static void getHotModle(String cityId,String count,String offset,HttpCallBack callBack){
-        OkHttpUtils.post().url(UrlUtils.HOT_MODLE_URL).addParams("cityId",cityId).addParams("count",count).addParams("offset",offset).build().execute(callBack);
+        OkHttpUtils.get().url(UrlUtils.HOT_MODLE_URL).addParams("cityId",cityId).addParams("count",count).addParams("offset",offset).build().execute(callBack);
 
 
     }
@@ -84,7 +85,43 @@ public class HttpHelper {
     }
 
     /**
-     * 根据车品牌获取车列表
+     * 从热门品牌到详情
+     * @param firmbrandId
+     * @param cityId
+     * @param callBack
+     */
+    public static void getCarDetailFromHotBand(String firmbrandId,String cityId,HttpCallBack callBack){
+        OkHttpUtils.post().url(UrlUtils.CAR_DETAILS_URL).addParams("firmbrandId",firmbrandId).addParams("cityId",cityId).build().execute(callBack);
+    }
+
+    /**
+     * 从热门车型到详情
+     */
+    public static void getCarDetailFromHotModle(String  styleId,String brandId,String cityId,HttpCallBack callBack){
+
+        OkHttpUtils.get().url(UrlUtils.CAR_DETAILS_URL).addParams("cityId",cityId).addParams("styleId", styleId).addParams("brandId",brandId).build().execute(callBack);
+        LogUtils.e(UrlUtils.CAR_DETAILS_URL);
+    }
+
+    /**
+     * 婚姻座驾
+     */
+
+    public static void getMarrigeCar(HttpCallBack callBack){
+        OkHttpUtils.get().url(UrlUtils.MARRIGE_CAR_URL).build().execute(callBack);
+    }
+
+    /**
+     * 全部评价
+     */
+    public static void getAllEvalute(String count,String offset, String cityId,String brandId,HttpCallBack callBack){
+        OkHttpUtils.get().url(UrlUtils.All_EVALUTE_URL).
+                addParams("count",count).addParams("offset",offset).addParams("cityId",cityId)
+        .addParams("brandId",brandId).build().execute(callBack);
+    }
+
+     /**
+      *  根据车品牌获取车列表
      */
     public static void getCarListByBrand(String type,String cityId,String brandId,HttpCallBack callBack){
         OkHttpUtils.post().url(UrlUtils.CAR_LIST_BY_BRAND)

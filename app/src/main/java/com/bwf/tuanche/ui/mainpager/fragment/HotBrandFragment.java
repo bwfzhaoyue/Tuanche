@@ -16,6 +16,7 @@ public class HotBrandFragment extends BaseFragment {
     private HotBrandResultBean result;
 
     private HotBrandAdpter adpter;
+    private String cityId;
 
     @Override
     protected int getResource() {
@@ -48,8 +49,13 @@ public class HotBrandFragment extends BaseFragment {
         GridLayoutManager layoutManager=new GridLayoutManager(this.getActivity(),3);
         rev_hot_brand_frag.setLayoutManager(layoutManager);
         adpter.setResult(result);
+        adpter.setCityId(cityId);
         rev_hot_brand_frag.setAdapter(adpter);
         adpter.notifyDataSetChanged();
 
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 }

@@ -7,12 +7,19 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.ui.choosecar.ChooseCarActivity;
+import com.bwf.tuanche.ui.citychoice.CityChoiceActivity;
 import com.bwf.tuanche.ui.mainpager.entity.BannerResult;
 import com.bwf.tuanche.ui.mainpager.entity.hotbrand.HotBrandResultBean;
 import com.bwf.tuanche.ui.mainpager.entity.hotmodle.HotModleResultBean;
@@ -22,6 +29,7 @@ import com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.HotModleFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment;
 import com.bwf.tuanche.ui.update.MyUpdatePopwindow;
+import com.bwf.tuanche.view.refresh.PullableScrollView;
 
 public class MainPagerActivity extends BaseActivity implements Handler.Callback{
 
@@ -31,7 +39,10 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
     private HotModleFragment frag_hot_modle;
     private LinearLayout ll_search;
 
-    private int cityId = 156;
+    private ImageView img_labe;
+    private String cityId = "156";
+    private PullableScrollView scroView_main;
+    private TextView tv_location;
     private int count = 10;
     private int offset = 0;
     private int isBuy = 2;
@@ -50,6 +61,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
 
 
 
+//        cityId=getIntent().getStringExtra("cityId");
         getTopBrandData();
         getBrand();
         getBanner();
@@ -63,20 +75,34 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
         frag_banner = (BannerFragment) getSupportFragmentManager().findFragmentById(R.id.frag_banner);
         frag_hot_modle = (HotModleFragment) getSupportFragmentManager().findFragmentById(R.id.frag_hot_modle);
         ll_search = findViewByIdNoCast(R.id.ll_search);
+        img_labe = findViewByIdNoCast(R.id.img_labe);
+        tv_location = findViewByIdNoCast(R.id.tv_location);
+        scroView_main = findViewByIdNoCast(R.id.scroView_main);
     }
 
     @Override
     public void initData() {
-
+        frag_promote_tabs.setCityId(cityId);
+        frag_hot_brand.setCityId(cityId);
+        setOnClick(img_labe,tv_location);
     }
 
     @Override
     public void onClick(View v) {
-
+        Bundle bundle=new Bundle();
+        switch (v.getId()){
+            case R.id.img_labe:
+                bundle.putString("cityId",cityId);
+                IntentUtils.openActivity(this, ChooseCarActivity.class,bundle);
+                break;
+            case R.id.tv_location:
+                IntentUtils.openActivity(this, CityChoiceActivity.class);
+                break;
+        }
     }
 
     public void getTopBrandData() {
-        HttpHelper.getTopBrand("" + cityId, new HttpCallBack<NcResultBean>() {
+        HttpHelper.getTopBrand(cityId, new HttpCallBack<NcResultBean>() {
 
 
             @Override
@@ -97,7 +123,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
      */
 
     public void getHotModleData() {
-        HttpHelper.getHotModle("156", "2", "0", new HttpCallBack<HotModleResultBean>() {
+        HttpHelper.getHotModle(cityId, "20", "10", new HttpCallBack<HotModleResultBean>() {
 
             @Override
             public void onSuccess(HotModleResultBean result) {
@@ -117,7 +143,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
      */
 
     public void getBrand() {
-        HttpHelper.getHotBrand("156", "2", new HttpCallBack<HotBrandResultBean>() {
+        HttpHelper.getHotBrand(cityId, "2", new HttpCallBack<HotBrandResultBean>() {
             @Override
             public void onSuccess(HotBrandResultBean result) {
                 if (result != null)
@@ -135,7 +161,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
      * 获得首页banner
      */
     public void getBanner() {
-        HttpHelper.getMainBanner("" + cityId, new HttpCallBack<BannerResult>() {
+        HttpHelper.getMainBanner(cityId, new HttpCallBack<BannerResult>() {
 
 
             @Override

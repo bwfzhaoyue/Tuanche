@@ -5,6 +5,7 @@
     android:padding="0.2dp"
     xmlns:fresco="http://schemas.android.com/apk/res-auto">
 <LinearLayout
+    android:id="@+id/ll_hot_modle"
     android:background="@android:color/white"
     android:layout_width="180dp"
     android:layout_height="190dp"
