@@ -40,4 +40,7 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.android.support:support-v4:24.0.0'
+
+    //二维码
+    compile project(':lib-zxing')
 }
