@@ -1,6 +1,13 @@
 package com.bwf.tuanche.ui.mainpager;
 
 import android.graphics.Color;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,14 +33,17 @@ import com.bwf.tuanche.ui.mainpager.fragment.HotModleFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment;
 import com.bwf.tuanche.view.LoadingView;
 import com.bwf.tuanche.view.refresh.PullToRefreshLayout;
+import com.bwf.tuanche.ui.update.MyUpdatePopwindow;
 import com.bwf.tuanche.view.refresh.PullableScrollView;
 
-public class MainPagerActivity extends BaseActivity {
+public class MainPagerActivity extends BaseActivity implements Handler.Callback{
 
     private PromoteAndTabFragment frag_promote_tabs;
     private HotBrandFragment frag_hot_brand;
     private BannerFragment frag_banner;
     private HotModleFragment frag_hot_modle;
+    private LinearLayout ll_search;
+
     private ImageView img_labe;
     private String cityId = "156";
     private PullableScrollView scroView_main;
@@ -55,6 +65,7 @@ public class MainPagerActivity extends BaseActivity {
 
 
     private LinearLayout ll_main, ll_order, ll_service, ll_my;
+    private Handler handler;
 
     public int getContentViewId() {
         return R.layout.activity_main_pager;
@@ -62,6 +73,13 @@ public class MainPagerActivity extends BaseActivity {
 
     @Override
     public void beforeInitView() {
+
+
+        handler = new Handler(this);
+        handler.sendEmptyMessageDelayed(1,1000);
+
+
+
 //        cityId=getIntent().getStringExtra("cityId");
         getTopBrandData();
         getBrand();
@@ -75,6 +93,7 @@ public class MainPagerActivity extends BaseActivity {
         frag_hot_brand = (HotBrandFragment) getSupportFragmentManager().findFragmentById(R.id.frag_hot_brand);
         frag_banner = (BannerFragment) getSupportFragmentManager().findFragmentById(R.id.frag_banner);
         frag_hot_modle = (HotModleFragment) getSupportFragmentManager().findFragmentById(R.id.frag_hot_modle);
+        ll_search = findViewByIdNoCast(R.id.ll_search);
         img_labe = findViewByIdNoCast(R.id.img_labe);
         tv_location = findViewByIdNoCast(R.id.tv_location);
         scroView_main = findViewByIdNoCast(R.id.scroView_main);
@@ -357,5 +376,17 @@ public class MainPagerActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+
+    @Override
+    public boolean handleMessage(Message message) {
+        switch (message.what){
+            case 1:
+                MyUpdatePopwindow myUpdatePopwindow = new MyUpdatePopwindow(this);
+                myUpdatePopwindow.showPopWindow(ll_search);
+                break;
+        }
+        return false;
     }
 }

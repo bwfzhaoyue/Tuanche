@@ -142,4 +142,13 @@ public class HttpHelper {
                 .build()
                 .execute(callBack);
     }
+
+    //版本更新
+    public static void getUpdateVersionData(String url,HttpCallBack callBack){
+        OkHttpUtils
+                .post()
+                .url(url)
+                .build()
+                .execute(callBack);
+    }
 }

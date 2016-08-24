@@ -24,6 +24,7 @@ import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.choosecar.adapter.CarInfoAdapter;
 import com.bwf.tuanche.ui.choosecar.entity.carsofbrand.CarInfoBean;
 import com.bwf.tuanche.ui.choosecar.entity.carsofbrand.CarsResult;
+import com.bwf.tuanche.ui.mainpager.HotModleAndBrandDetailsActivity;
 
 /**
  * author zhaoyue
@@ -134,7 +135,7 @@ public class ChooseCarPopWindow extends PopupWindow implements View.OnClickListe
                 bundle.putString("cityId",cityId);
 
                 //打开详情Activity
-
+                IntentUtils.openActivity(activity, HotModleAndBrandDetailsActivity.class);
             }
         });
     }
