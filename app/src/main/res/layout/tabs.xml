@@ -21,12 +21,14 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/img_main"
                 android:layout_width="28dp"
                 android:layout_height="32dp"
                 android:scaleType="centerCrop"
 
                 android:src="@mipmap/nav_icon_home_sel"/>
             <TextView
+                android:id="@+id/tv_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="首页"
@@ -43,11 +45,13 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/img_order"
                 android:layout_width="28dp"
                 android:layout_height="32dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/nav_icon_order_nor"/>
             <TextView
+                android:id="@+id/tv_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="订单"
@@ -66,11 +70,13 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/img_service"
                 android:layout_width="28dp"
                 android:layout_height="32dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/nav_icon_server_nor"/>
             <TextView
+                android:id="@+id/tv_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="客服"
@@ -85,11 +91,13 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/img_my"
                 android:layout_width="28dp"
                 android:layout_height="32dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/nav_icon_my_nor"/>
             <TextView
+                android:id="@+id/tv_my"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="订单"

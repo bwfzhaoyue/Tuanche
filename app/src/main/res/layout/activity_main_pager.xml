@@ -49,67 +49,95 @@
             android:scaleType="centerCrop"
             android:src="@mipmap/icon_top_icon_saomiao" />
     </LinearLayout>
-
-    <com.bwf.tuanche.view.refresh.PullToRefreshLayout
-        android:id="@+id/scr_mainpager"
-        android:layout_alignParentBottom="true"
-        android:paddingBottom="55.5dp"
-        android:layout_below="@id/ll_search"
+    <!--个人主页-->
+    <RelativeLayout
+        android:id="@+id/rel_person"
+        android:visibility="gone"
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55.5dp">
+        <fragment
+            android:name="com.bwf.tuanche.ui.mainpager.fragment.PersonFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+    <!--主页-->
+    <RelativeLayout
+        android:id="@+id/rel_mainpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_search"
+        android:layout_marginBottom="55.5dp"
+        android:visibility="visible">
 
-        <include layout="@layout/refresh_head" />
-        <!-- 支持所有实现Pullable接口的View -->
-        <com.bwf.tuanche.view.refresh.PullableScrollView
-            android:background="@color/light_gray"
-            android:id="@+id/scroView_main"
+        <com.bwf.tuanche.view.refresh.PullToRefreshLayout
+            android:id="@+id/scr_mainpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
+            android:layout_alignParentBottom="true">
 
-            <LinearLayout
+            <include layout="@layout/refresh_head" />
+            <!-- 支持所有实现Pullable接口的View -->
+
+            <com.bwf.tuanche.view.refresh.PullableScrollView
+                android:id="@+id/scroView_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:background="@color/light_gray">
 
-                <View
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0.2dp"
-                    android:background="@android:color/darker_gray" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <fragment
-                    android:id="@+id/frag_promote_tabs"
-                    android:name="com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:background="@android:color/darker_gray" />
 
-                <fragment
-                    android:id="@+id/frag_hot_brand"
-                    android:name="com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_5" />
+                    <fragment
+                        android:id="@+id/frag_promote_tabs"
+                        android:name="com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <fragment
-                    android:id="@+id/frag_banner"
-                    android:name="com.bwf.tuanche.ui.mainpager.fragment.BannerFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_5" />
+                    <fragment
+                        android:id="@+id/frag_hot_brand"
+                        android:name="com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_5" />
 
-                <fragment
-                    android:id="@+id/frag_hot_modle"
-                    android:name="com.bwf.tuanche.ui.mainpager.fragment.HotModleFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_5" />
-            </LinearLayout>
-        </com.bwf.tuanche.view.refresh.PullableScrollView>
+                    <fragment
+                        android:id="@+id/frag_banner"
+                        android:name="com.bwf.tuanche.ui.mainpager.fragment.BannerFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_5" />
+
+                    <fragment
+                        android:id="@+id/frag_hot_modle"
+                        android:name="com.bwf.tuanche.ui.mainpager.fragment.HotModleFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_5" />
+                </LinearLayout>
+            </com.bwf.tuanche.view.refresh.PullableScrollView>
 
 
-        <include layout="@layout/load_more" />
-    </com.bwf.tuanche.view.refresh.PullToRefreshLayout>
+            <include layout="@layout/load_more" />
+        </com.bwf.tuanche.view.refresh.PullToRefreshLayout>
 
+        <com.bwf.tuanche.view.LoadingView
+            android:id="@+id/main_boy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
+
+        </com.bwf.tuanche.view.LoadingView>
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"

@@ -32,22 +32,17 @@
         <activity android:name=".ui.choosecar.ChooseCarActivity" />
 
         <!-- 引导页 -->
-        <activity android:name=".ui.mainpager.MainPagerActivity" />
-        <activity android:name=".ui.welcome.WelcomeActivity">
+        <activity android:name=".ui.welcome.WelcomeActivity" />
+        <activity android:name=".ui.mainpager.MainPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.welcome.GuideActivity" />
-
-        <activity android:name=".ui.citychoice.CityChoiceActivity">
-        </activity>
-
-
-        <activity android:name=".ui.login.LoginActivity"></activity>
+        <activity android:name=".ui.citychoice.CityChoiceActivity" />
+        <activity android:name=".ui.login.LoginActivity" />
 
         <!-- 百度定位SDK -->
         <service
@@ -65,8 +60,13 @@
             android:configChanges="keyboardHidden" />
         <activity android:name=".ui.mainpager.CenterBannerDetailActivity" />
         <activity android:name=".ui.mainpager.MarrigeCarActivity" />
-        <activity android:name=".ui.mainpager.EvaluteDetailsActivity"></activity>
-        <activity android:name=".view.refresh.RefreshTestActivity"></activity>
+        <activity android:name=".ui.mainpager.EvaluteDetailsActivity" />
+        <activity android:name=".view.refresh.RefreshTestActivity" />
+        <activity
+            android:name=".ui.mainpager.ScanHistoryActivity"
+            android:label="@string/title_activity_scan_history"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".ui.search.SearchActivity"></activity>
     </application>
 
 </manifest>

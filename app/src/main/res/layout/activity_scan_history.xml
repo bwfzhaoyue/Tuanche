@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.bwf.tuanche.ui.mainpager.ScanHistoryActivity">
+<RelativeLayout
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_50dp">
+    <ImageView
+        android:id="@+id/img_scan_back"
+        android:padding="@dimen/dimen_10dp"
+        android:layout_width="@dimen/dimen_40dp"
+        android:layout_height="match_parent"
+        android:src="@mipmap/icon_back"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_18"
+        android:text="浏览记录"/>
+</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/light_gray"/>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/white">
+       <ListView
+           android:id="@+id/lv_scan"
+           android:dividerHeight="@dimen/dimen_1dp"
+           android:divider="@color/light_gray"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       </ListView>
+   </RelativeLayout>
+</LinearLayout>

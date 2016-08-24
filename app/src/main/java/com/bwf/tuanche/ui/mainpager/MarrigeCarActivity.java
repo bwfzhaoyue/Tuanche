@@ -13,6 +13,7 @@ import com.bwf.framwork.utils.ListViewUtils;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.mainpager.entity.marrigecar.MarrigeCarResultBean;
 import com.bwf.tuanche.ui.mainpager.fragment.adpter.MarrigeCarAdapter;
+import com.bwf.tuanche.view.LoadingView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 public class MarrigeCarActivity extends BaseActivity {
@@ -27,6 +28,8 @@ public class MarrigeCarActivity extends BaseActivity {
     private ImageView img_back_marrige, img_share_marrige;
 
     private TextView tv_marrige;
+
+    private LoadingView runBoy_marrige;
 
     @Override
     public int getContentViewId() {
@@ -45,6 +48,7 @@ public class MarrigeCarActivity extends BaseActivity {
         img_share_marrige = findViewByIdNoCast(R.id.img_share_marrige);
         lv_marrige = findViewByIdNoCast(R.id.lv_marrige);
         sdv_marrige_title = findViewByIdNoCast(R.id.sdv_marrige_title);
+        runBoy_marrige = findViewByIdNoCast(R.id.runBoy_marrige);
         setToBack(img_back_marrige);
     }
 
@@ -52,7 +56,7 @@ public class MarrigeCarActivity extends BaseActivity {
     public void initData() {
         if (resultM != null) {
             tv_marrige.setText(resultM.result.adpTitle);
-            ImageLoader.getInstance().disPlayImage(sdv_marrige_title,resultM.result.adpLogo);
+            ImageLoader.getInstance().disPlayImage(sdv_marrige_title, resultM.result.adpLogo);
         }
     }
 
@@ -74,13 +78,22 @@ public class MarrigeCarActivity extends BaseActivity {
                     lv_marrige.setAdapter(carAdapter);
                     ListViewUtils.measureListViewHeight(lv_marrige);
                     carAdapter.notifyDataSetChanged();
+                    if (runBoy) {
+                        runBoy_marrige.setLoadingFinish();
+                        runBoy = false;
+                    }
                 }
             }
 
             @Override
             public void onFail(String errMsg) {
-
+                if (runBoy) {
+                    runBoy_marrige.setLoadFail();
+                    runBoy = false;
+                }
             }
         });
     }
+
+    private boolean runBoy = true;
 }

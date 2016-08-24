@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bwf.framwork.db.model.UserModel;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.mainpager.HotModleAndBrandDetailsActivity;
@@ -60,6 +61,7 @@ public class HotModleAdpter extends RecyclerView.Adapter<HotModleAdpter.HotModle
         holder.ll_hot_modle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserModel.getUserModel().insertUser(results.get(position));
                 Bundle bundle=new Bundle();
                 bundle.putInt("type",1);
                 bundle.putString("brandId",results.get(position).brandId);

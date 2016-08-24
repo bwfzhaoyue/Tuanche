@@ -27,13 +27,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <WebView
-            android:padding="@dimen/padding_5"
-            android:id="@+id/wb_banner_center"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </ScrollView>
+            android:layout_height="match_parent">
+            <WebView
+                android:padding="@dimen/padding_5"
+                android:id="@+id/wb_banner_center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </ScrollView>
+        <com.bwf.tuanche.view.LoadingView
+            android:id="@+id/runBoy_centerBanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.bwf.tuanche.view.LoadingView>
+    </RelativeLayout>
 </LinearLayout>

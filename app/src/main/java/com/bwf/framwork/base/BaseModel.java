@@ -6,38 +6,36 @@ import android.provider.BaseColumns;
 
 import com.bwf.framwork.db.DBHelper;
 
-import java.util.List;
 import java.util.Map;
 
-
 /**
- * Created by Lizhangfeng on 2016/8/8 0008.
- * Description: 基类model
+ * Created by zengqiang on 2016/8/8.
+ * Description:MySqlLiteDemo
  */
 public abstract class BaseModel implements BaseColumns {
 
     private DBHelper dbHelper;
 
     public BaseModel() {
-        dbHelper = DBHelper.getInstence();
+        dbHelper = DBHelper.getInstance();
     }
 
     /**
-     * 插入数据库语句
-     *
-     * @return
+     * 创建表格sql语句
+     * CREATE TABLE COMPANY(
+     * ID INTEGER PRIMARY KEY AUTOINCREMENT,
+     * NAME           TEXT    NOT NULL,
+     * AGE            INT     NOT NULL,
+     * ADDRESS        CHAR(50),
+     * SALARY         REAL)
+     * )
      */
-    public String getCreateTableSql() {
-        return getCreateTable(getTableName(), getParamsMap());
-    }
-
     public String getCreateTable(String tableName, Map<String, String> map) {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("create table ").append(tableName).append(" (");
-
-        for (Map.Entry<String, String> entity : map.entrySet()) {
-            stringBuilder.append(entity.getKey()).append(" ").append(entity.getValue());
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            stringBuilder.append(entry.getKey()).append(" ").append(entry.getValue());
             stringBuilder.append(",");
         }
         String sql = stringBuilder.substring(0, stringBuilder.length() - 1);
@@ -45,73 +43,73 @@ public abstract class BaseModel implements BaseColumns {
         return sql;
     }
 
-    /**
-     * 插入一条
-     */
-    public void insert(String tableName, ContentValues values) {
-        dbHelper.getWritableDatabase().insert(tableName, null, values);
+    public String getCreateTableSql() {
+        return getCreateTable(getTableName(), getParamsMap());
     }
 
     /**
-     * 插入多条数据（没插入一条数据，数据库会默认开启一个事务）
-     *
-     * @param tableName
-     * @param values
+     * 获得表名称
      */
-    public void insertMore(String tableName, List<ContentValues> values) {
-        //事务的开启
-        dbHelper.getWritableDatabase().beginTransaction();
-        for (int i = 0; i < values.size(); i++) {
-            insert(tableName, values.get(i));
-        }
-        dbHelper.getWritableDatabase().endTransaction();//事务的结束
 
+    protected abstract String getTableName();
+
+    /**
+     * 获得表格行列族名集合
+     */
+
+    protected abstract Map<String, String> getParamsMap();
+
+    /**
+     * 插入一行内容
+     */
+
+    public void insert( ContentValues values) {
+        dbHelper.getWritableDatabase().insert(getTableName(), null, values);
     }
 
     /**
-     * 更新
+     * 修改一条内容
      */
-    public void update(String tableName, ContentValues values, String where, String[] whereArgs) {
-        dbHelper.getWritableDatabase().update(tableName, values, where, whereArgs);
+
+    public void update( ContentValues values, String whereClause, String[] whereArgs) {
+        dbHelper.getWritableDatabase().update(getTableName(),values, whereClause, whereArgs);
     }
 
     /**
-     * 删除数据
+     * 删除一条数据
      */
-    public void delete(String tableName, String where, String[] whereArgs) {
-        dbHelper.getWritableDatabase().delete(tableName, where, whereArgs);
+
+    public void delete(String whereClause, String[] whereArgs) {
+        dbHelper.getWritableDatabase().delete(getTableName(), whereClause, whereArgs);
     }
 
     /**
-     * 查询
-     *
-     * @param sql
+     * 查看数据
      */
-    public Cursor select(String sql) {
+
+    public Cursor query(String sql) {
         return dbHelper.getReadableDatabase().rawQuery(sql, null);
     }
 
     /**
-     * 清空表
-     *
-     * @param tableName
+     * 查看所有数据
      */
-    public void clear(String tableName) {
-        dbHelper.getWritableDatabase().execSQL("delete from " + tableName);
+    public Cursor queryAll(){
+        return dbHelper.getReadableDatabase().query(getTableName(),null,null,null,null,null,null);
+    }
+    /**
+     * 清空表
+     */
+
+    public void clear(){
+        dbHelper.getWritableDatabase().execSQL("delete from "+getTableName());
     }
 
     /**
-     * 删除更个表
-     *
-     * @param tableName
+     * 删除整个表
      */
-    public void deleteTable(String tableName) {
-        dbHelper.getWritableDatabase().execSQL("drop table " + tableName);
+
+    public void deleteTable(){
+        dbHelper.getWritableDatabase().execSQL("drop table "+getTableName());
     }
-
-    protected abstract String getTableName();
-
-    protected abstract Map<String, String> getParamsMap();
-
-
 }
