@@ -7,7 +7,6 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.bwf.tuanche.ui.mainpager.MarrigeCarActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -44,32 +43,41 @@
                 android:src="@mipmap/icon_fenxiang" />
         </RelativeLayout>
     </LinearLayout>
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:background="@android:color/darker_gray" />
-            <com.facebook.drawee.view.SimpleDraweeView
-                fresco:placeholderImageScaleType="fitCenter"
-                android:id="@+id/sdv_marrige_title"
-                android:layout_width="match_parent"
-                android:layout_height="150dp" />
 
-            <ListView
-                android:background="@android:color/white"
-                android:id="@+id/lv_marrige"
-                android:dividerHeight="0.2dp"
-                android:divider="@android:color/darker_gray"
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-    </ScrollView>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@android:color/darker_gray" />
+                <com.facebook.drawee.view.SimpleDraweeView
+                    fresco:placeholderImageScaleType="fitCenter"
+                    android:id="@+id/sdv_marrige_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp" />
+
+                <ListView
+                    android:background="@android:color/white"
+                    android:id="@+id/lv_marrige"
+                    android:dividerHeight="0.2dp"
+                    android:divider="@android:color/darker_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </ScrollView>
+        <com.bwf.tuanche.view.LoadingView
+            android:id="@+id/runBoy_marrige"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.bwf.tuanche.view.LoadingView>
+    </RelativeLayout>
 
 </LinearLayout>

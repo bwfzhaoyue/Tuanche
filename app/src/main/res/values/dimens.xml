@@ -31,6 +31,7 @@
     <dimen name="dimen_150dp">150dp</dimen>
     <dimen name="dimen_300dp">300dp</dimen>
     <dimen name="dimen_20sp">20sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>

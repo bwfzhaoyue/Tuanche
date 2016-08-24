@@ -56,53 +56,63 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@android:color/darker_gray"/>
-    <ScrollView
-        android:background="@android:color/darker_gray"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <ScrollView
+            android:background="@android:color/darker_gray"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <fragment
-                android:id="@+id/frag_img_customer"
-                android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"/>
-            <fragment
-                android:id="@+id/frag_tuanche_promise"
-                android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"/>
-            <fragment
-                android:id="@+id/frag_tuanche_process"
-                android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CarBuyingProcessFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"/>
-            <fragment
-                android:id="@+id/frag_tuanche_evalute"
-                android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.BuyingCarEvaluteFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"/>
-            <fragment
-                android:id="@+id/frag_tuanche_commen_problem"
-                android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <fragment
+                    android:id="@+id/frag_img_customer"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+                <fragment
+                    android:id="@+id/frag_tuanche_promise"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+                <fragment
+                    android:id="@+id/frag_tuanche_process"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CarBuyingProcessFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+                <fragment
+                    android:id="@+id/frag_tuanche_evalute"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.BuyingCarEvaluteFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+                <fragment
+                    android:id="@+id/frag_tuanche_commen_problem"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
 
-    </ScrollView>
+        </ScrollView>
+        <com.bwf.tuanche.view.LoadingView
+            android:id="@+id/runBoy_carDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.bwf.tuanche.view.LoadingView>
+    </RelativeLayout>
 </LinearLayout>

@@ -30,8 +30,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <activity android:name=".ui.mainpager.MainPagerActivity"/>
-        <activity android:name=".ui.choosecar.ChooseCarActivity"></activity>
+        <!-- 引导页 -->
+
+        <activity android:name=".ui.choosecar.ChooseCarActivity"/>
 
         <activity android:name=".ui.citychoice.CityChoiceActivity"/>
 
@@ -47,8 +48,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.login.LoginActivity" />
 
-        <activity android:name=".ui.login.LoginActivity"></activity>
 
         <!-- 百度定位SDK -->
         <service
@@ -61,13 +62,19 @@
             android:value="qP8xQGb4IsYkyQy1Ca5YXd6QM0Wkstpj" />
 
         <!-- 引导页 -->
+        <activity android:name=".ui.mainpager.MainPagerActivity"/>
         <activity
             android:name=".ui.mainpager.HotModleAndBrandDetailsActivity"
             android:configChanges="keyboardHidden" />
         <activity android:name=".ui.mainpager.CenterBannerDetailActivity" />
         <activity android:name=".ui.mainpager.MarrigeCarActivity" />
-        <activity android:name=".ui.mainpager.EvaluteDetailsActivity"></activity>
-        <activity android:name=".view.refresh.RefreshTestActivity"></activity>
+        <activity android:name=".ui.mainpager.EvaluteDetailsActivity" />
+        <activity android:name=".view.refresh.RefreshTestActivity" />
+        <activity
+            android:name=".ui.mainpager.ScanHistoryActivity"
+            android:label="@string/title_activity_scan_history"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".ui.search.SearchActivity"></activity>
     </application>
 
 </manifest>

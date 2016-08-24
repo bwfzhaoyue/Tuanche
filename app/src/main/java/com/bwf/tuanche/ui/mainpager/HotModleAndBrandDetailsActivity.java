@@ -18,6 +18,7 @@ import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CarBuyingProcessFra
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment;
+import com.bwf.tuanche.view.LoadingView;
 
 import java.util.List;
 
@@ -37,8 +38,9 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
     private CarBuyingProcessFragment frag_tuanche_process;
     private BuyingCarEvaluteFragment frag_tuanche_evalute;
     private CommenProblemFragment frag_tuanche_commen_problem;
-
-    private TextView tv_car_brand,tv_car_city;
+    private LoadingView runBoy_carDetail;
+    private TextView tv_car_brand, tv_car_city;
+    private Boolean runBoy = true;
 
     @Override
     public int getContentViewId() {
@@ -64,9 +66,10 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        img_retrun=findViewByIdNoCast(R.id.img_retrun);
-        tv_car_city=findViewByIdNoCast(R.id.tv_car_city);
-        tv_car_brand=findViewByIdNoCast(R.id.tv_car_brand);
+        img_retrun = findViewByIdNoCast(R.id.img_retrun);
+        runBoy_carDetail = findViewByIdNoCast(R.id.runBoy_carDetail);
+        tv_car_city = findViewByIdNoCast(R.id.tv_car_city);
+        tv_car_brand = findViewByIdNoCast(R.id.tv_car_brand);
         setToBack(img_retrun);
         frag_img_customer = (ImageAndCustomerFragment) getSupportFragmentManager().findFragmentById(R.id.frag_img_customer);
         frag_tuanche_promise = (TuanChePromiseFragment) getSupportFragmentManager().findFragmentById(R.id.frag_tuanche_promise);
@@ -96,21 +99,30 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                 if (result != null) {
                     frag_img_customer.setResult(result);
                     LogUtils.e("", result.toString());
-                    frag_tuanche_evalute.setResult( result.result);
-                    tv_car_brand.setText(result.result.styleName+"-");
+                    frag_tuanche_evalute.setResult(result.result);
+                    tv_car_brand.setText(result.result.styleName + "-");
                     String tcbzDesc = result.result.tcbzDesc;
-                    List<PromiseCar> carList = JSON.parseArray(tcbzDesc.replace("\\",""),PromiseCar.class);
+                    List<PromiseCar> carList = JSON.parseArray(tcbzDesc.replace("\\", ""), PromiseCar.class);
                     if (carList != null)
                         frag_tuanche_promise.setResult(carList);
+                    if (runBoy) {
+                        runBoy_carDetail.setLoadingFinish();
+                        runBoy=false;
+                    }
                 }
             }
 
             @Override
             public void onFail(String errMsg) {
                 ToastUtil.showToast(errMsg);
+                if (runBoy) {
+                    runBoy_carDetail.setLoadFail();
+                    runBoy=false;
+                }
             }
         });
     }
+
 
     /**
      * 热门车型
@@ -123,12 +135,16 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                 if (result != null) {
                     LogUtils.e("result:", result.toString());
                     frag_img_customer.setResult(result);
-                    tv_car_brand.setText(result.result.styleName+"-");
+                    tv_car_brand.setText(result.result.styleName + "-");
                     frag_tuanche_evalute.setResult(result.result);
                     String tcbzDesc = result.result.tcbzDesc;
-                    List<PromiseCar> carList = JSON.parseArray(tcbzDesc.replace("\\",""),PromiseCar.class);
+                    List<PromiseCar> carList = JSON.parseArray(tcbzDesc.replace("\\", ""), PromiseCar.class);
                     if (carList != null)
                         frag_tuanche_promise.setResult(carList);
+                    if (runBoy) {
+                        runBoy_carDetail.setLoadingFinish();
+                        runBoy=false;
+                    }
 
                 }
             }
@@ -136,6 +152,10 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
             @Override
             public void onFail(String errMsg) {
                 ToastUtil.showToast(errMsg);
+                if(runBoy){
+                    runBoy_carDetail.setLoadFail();
+                    runBoy=false;
+                }
             }
         });
 

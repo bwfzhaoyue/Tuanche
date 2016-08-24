@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.view.LoadingView;
 
 public class CenterBannerDetailActivity extends BaseActivity {
 
@@ -20,7 +21,12 @@ public class CenterBannerDetailActivity extends BaseActivity {
     private WebView wb_banner_center;
 
     private TextView tv_banner_title;
+
+    private LoadingView runBoy_centerBanner;
+
+    private boolean runBoy=true;
     @Override
+
     public int getContentViewId() {
         return R.layout.activity_center_banner_detail;
     }
@@ -36,6 +42,7 @@ public class CenterBannerDetailActivity extends BaseActivity {
         wb_banner_center=findViewByIdNoCast(R.id.wb_banner_center);
         tv_banner_title=findViewByIdNoCast(R.id.tv_banner_title);
         img_back_banner=findViewByIdNoCast(R.id.img_back_banner);
+        runBoy_centerBanner=findViewByIdNoCast(R.id.runBoy_centerBanner);
         setToBack(img_back_banner);
     }
 
@@ -47,7 +54,6 @@ public class CenterBannerDetailActivity extends BaseActivity {
         //设置滚动条样式
         wb_banner_center.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
         wb_banner_center.setHorizontalScrollBarEnabled(false);
-
         WebSettings settings = wb_banner_center.getSettings();
         //支持缩放
         settings.setSupportZoom(true);
@@ -80,7 +86,19 @@ public class CenterBannerDetailActivity extends BaseActivity {
             view.loadUrl(url);
             return false;
         }
+        /**
+         * 网页加载完成
+         */
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            if (runBoy){
+                runBoy_centerBanner.setLoadingFinish();
+                runBoy=false;
+            }
+            super.onPageFinished(view, url);
+        }
     }
+
 
     /**
      * 重写返回键
@@ -99,4 +117,7 @@ public class CenterBannerDetailActivity extends BaseActivity {
 
         return super.onKeyDown(keyCode, event);
     }
+
+
+
 }
