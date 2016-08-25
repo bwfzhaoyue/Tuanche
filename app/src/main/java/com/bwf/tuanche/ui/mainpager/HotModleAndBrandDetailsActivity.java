@@ -1,5 +1,8 @@
 package com.bwf.tuanche.ui.mainpager;
 
+import com.umeng.socialize.UMShareAPI;
+
+import android.content.Intent;
 import android.annotation.TargetApi;
 import android.graphics.Rect;
 import android.os.Build;
@@ -9,12 +12,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
 import com.bwf.framwork.utils.LogUtils;
+import com.bwf.framwork.utils.ShareUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.mainpager.entity.cardetails.CarDetailsResultBean;
@@ -25,11 +30,16 @@ import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragme
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment;
 import com.bwf.tuanche.view.LoadingView;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.bwf.tuanche.view.ObservableScrollView;
 
 import java.util.List;
 
 public class HotModleAndBrandDetailsActivity extends BaseActivity {
+
+    private UMShareAPI shareAPI;
 
     private String cityId;
 
@@ -39,7 +49,9 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
 
     private int type;
 
-    private ImageView img_retrun;
+    private String shareUrl,shareImg,shareTitle;
+
+    private ImageView img_retrun, img_share;
     private ImageAndCustomerFragment frag_img_customer;
     private TuanChePromiseFragment frag_tuanche_promise;
     private CarBuyingProcessFragment frag_tuanche_process;
@@ -73,6 +85,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                 getHotBanderData();
                 break;
         }
+        shareAPI = UMShareAPI.get(this);
     }
 
     @Override
@@ -81,6 +94,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
         runBoy_carDetail = findViewByIdNoCast(R.id.runBoy_carDetail);
         tv_car_city = findViewByIdNoCast(R.id.tv_car_city);
         tv_car_brand = findViewByIdNoCast(R.id.tv_car_brand);
+        img_share = findViewByIdNoCast(R.id.img_share);
         scrollView_detail = findViewByIdNoCast(R.id.scrollView_detail);
         bt_enter_in = findViewByIdNoCast(R.id.bt_enter_in);
         bt_enter_bottom = findViewByIdNoCast(R.id.bt_enter_bottom);
@@ -96,6 +110,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
     @Override
     public void initData() {
         tv_car_city.setText("成都站");
+        setOnClick(img_share);
 
         scrollView_detail.setOnScrollChangeListener(new ObservableScrollView.OnScrollChangeListener() {
             @Override
@@ -135,7 +150,11 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.img_share:
+                share(SHARE_MEDIA.QQ,shareTitle," ",shareUrl,shareImg);
+                break;
+        }
     }
 
     /**
@@ -149,6 +168,8 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                 if (result != null) {
                     frag_img_customer.setResult(result);
                     LogUtils.e("", result.toString());
+                    shareUrl=result.result.shareBrandUrl;
+                    shareImg=result.result.logo;
                     frag_tuanche_evalute.setResult(result.result);
                     tv_car_brand.setText(result.result.styleName + "-");
                     String tcbzDesc = result.result.tcbzDesc;
@@ -157,7 +178,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                         frag_tuanche_promise.setResult(carList);
                     if (runBoy) {
                         runBoy_carDetail.setLoadingFinish();
-                        runBoy=false;
+                        runBoy = false;
                     }
                 }
             }
@@ -167,7 +188,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                 ToastUtil.showToast(errMsg);
                 if (runBoy) {
                     runBoy_carDetail.setLoadFail();
-                    runBoy=false;
+                    runBoy = false;
                 }
             }
         });
@@ -184,6 +205,10 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
             public void onSuccess(CarDetailsResultBean result) {
                 if (result != null) {
                     LogUtils.e("result:", result.toString());
+                    shareUrl=result.result.shareStyleUrl;
+                    LogUtils.e(shareUrl);
+                    shareImg=result.result.brandLogo;
+                    shareTitle=result.result.shareStyleTitle;
                     frag_img_customer.setResult(result);
                     tv_car_brand.setText(result.result.styleName + "-");
                     frag_tuanche_evalute.setResult(result.result);
@@ -193,7 +218,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
                         frag_tuanche_promise.setResult(carList);
                     if (runBoy) {
                         runBoy_carDetail.setLoadingFinish();
-                        runBoy=false;
+                        runBoy = false;
                     }
 
                 }
@@ -202,12 +227,39 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
             @Override
             public void onFail(String errMsg) {
                 ToastUtil.showToast(errMsg);
-                if(runBoy){
+                if (runBoy) {
                     runBoy_carDetail.setLoadFail();
-                    runBoy=false;
+                    runBoy = false;
                 }
             }
         });
 
+    }
+
+
+    public void share(SHARE_MEDIA share_media, String title, String desc
+            , String url, String imageUrl) {
+        ShareUtils.ThirdShare(this, share_media, title, desc, url, imageUrl, new UMShareListener() {
+            @Override
+            public void onResult(SHARE_MEDIA share_media) {
+                Toast.makeText(HotModleAndBrandDetailsActivity.this, "分享成功", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                Toast.makeText(HotModleAndBrandDetailsActivity.this, "分享失败", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancel(SHARE_MEDIA share_media) {
+                Toast.makeText(HotModleAndBrandDetailsActivity.this, "取消分享", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 }

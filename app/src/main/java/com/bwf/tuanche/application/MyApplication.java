@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 
 import com.bwf.tuanche.ui.mainpager.entity.hotmodle.HotModleResult;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.umeng.socialize.PlatformConfig;
 import com.uuzuche.lib_zxing.DisplayUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
@@ -30,6 +31,8 @@ public class MyApplication extends Application {
         super.onCreate();
         myApplication = this;
         results = new ArrayList<>();
+        //QQ appid appsecret
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
         //初始化facebook
         Fresco.initialize(this);
         //初始化okhttp

@@ -2,14 +2,9 @@ package com.bwf.tuanche.ui.mainpager;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -32,9 +27,10 @@ import com.bwf.tuanche.ui.mainpager.fragment.BannerFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.HotBrandFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.HotModleFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.PromoteAndTabFragment;
+import com.bwf.tuanche.ui.search.SearchActivity;
+import com.bwf.tuanche.ui.update.MyUpdatePopwindow;
 import com.bwf.tuanche.view.LoadingView;
 import com.bwf.tuanche.view.refresh.PullToRefreshLayout;
-import com.bwf.tuanche.ui.update.MyUpdatePopwindow;
 import com.bwf.tuanche.view.refresh.PullableScrollView;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -62,7 +58,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
     private PullToRefreshLayout pullToRefreshLayout_This;
     private RelativeLayout rel_person, rel_mainpager;
 
-    private TextView tv_my, tv_main, tv_order, tv_service;
+    private TextView tv_my, tv_main, tv_order, tv_service,tv_search;
 
     private ImageView img_my, img_main, img_order, img_service,img_erweima;
 
@@ -120,6 +116,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
         img_service = findViewByIdNoCast(R.id.img_service);
 
         img_erweima = findViewByIdNoCast(R.id.img_erweima);
+        tv_search = findViewByIdNoCast(R.id.tv_search);
     }
 
     @Override
@@ -127,7 +124,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
         frag_promote_tabs.setCityId(cityId);
         frag_hot_brand.setCityId(cityId);
         scroView_main.setCanLoadMore(false);
-        setOnClick(img_labe, tv_location, ll_main, ll_order, ll_service, ll_my,img_erweima);
+        setOnClick(tv_search,img_labe, tv_location, ll_main, ll_order, ll_service, ll_my,img_erweima);
         scr_mainpager.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
@@ -184,6 +181,11 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
     public void onClick(View v) {
         Bundle bundle = new Bundle();
         switch (v.getId()) {
+
+            case R.id.tv_search:
+                bundle.putString("cityId", cityId);
+                IntentUtils.openActivity(this, SearchActivity.class, bundle);
+                break;
             case R.id.img_labe:
                 bundle.putString("cityId", cityId);
                 IntentUtils.openActivity(this, ChooseCarActivity.class, bundle);

@@ -131,6 +131,15 @@ public class HttpHelper {
                 .build()
                 .execute(callBack);
     }
+    /**
+     *  热门搜索
+     */
+    public static void getHotSearch(String cityId,HttpCallBack callBack){
+        OkHttpUtils.post().url(UrlUtils.HOT_SEARCH)
+                .addParams("cityId",cityId)
+                .build()
+                .execute(callBack);
+    }
 
     //用于定位城市
     public static void getLocationCityData(String url,String longitude,String latitude,HttpCallBack callBack){

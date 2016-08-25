@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:alpha="0.5"
+    android:orientation="vertical">
+<com.bwf.tuanche.view.ViewPagerIndecator
+    android:layout_width="match_parent"
+    android:layout_height="6dp">
+</com.bwf.tuanche.view.ViewPagerIndecator>
+    <TextView
+        android:id="@+id/tv_pop"
+        android:paddingTop="@dimen/padding_5"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_10"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50dp" />
+</LinearLayout>

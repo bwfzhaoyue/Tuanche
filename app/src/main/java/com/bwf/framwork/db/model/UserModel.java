@@ -114,21 +114,7 @@ public class UserModel extends BaseModel {
         return customer;
     }
 
-    /**
-     * 查询当前数据是否存在
-     */
-//    public boolean queryUserIsExsist(String id) {
-//        HotModleResult customer = new HotModleResult();
-//        String sql = "select * from " + TABLENAME + " where id='" + id + "'";
-//        Cursor cursor = query(sql);
-//        if (cursor != null) {
-//            if (cursor.moveToNext())
-//                return true;
-//            else
-//                return false;
-//        }
-//        return false;
-//    }
+
 
     /**
      * 查询所有用户

@@ -2,23 +2,27 @@ package com.bwf.tuanche.ui.mainpager.fragment.detailsfragment;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseFragment;
 import com.bwf.framwork.image.ImageLoader;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.ui.mainpager.entity.cardetails.CarDetailsResultBean;
+import com.bwf.tuanche.view.SanJiaoPopWindow;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 
 public class ImageAndCustomerFragment extends BaseFragment {
 
+    private SanJiaoPopWindow popWindow;
     private SimpleDraweeView sdv_details_car;
 
     private TextView tv_this_num, tv_this_save_money, tv_tuan_time, tv_tuan_address, tv_tuan_price;
 
     private EditText et_customer_phone, et_customer_name;
 
+    private ImageView img_wenhao;
 
     @Override
     protected int getResource() {
@@ -37,6 +41,7 @@ public class ImageAndCustomerFragment extends BaseFragment {
         tv_tuan_time = findViewByIdNoCast(R.id.tv_tuan_time);
         tv_tuan_address = findViewByIdNoCast(R.id.tv_tuan_address);
         tv_tuan_price = findViewByIdNoCast(R.id.tv_tuan_price);
+        img_wenhao = findViewByIdNoCast(R.id.img_wenhao);
 
         sdv_details_car = findViewByIdNoCast(R.id.sdv_details_car);
         et_customer_phone = findViewByIdNoCast(R.id.et_customer_phone);
@@ -46,18 +51,24 @@ public class ImageAndCustomerFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        setOnClick(img_wenhao);
+        popWindow=new SanJiaoPopWindow(this.getActivity());
         if (result != null) {
-            ImageLoader.getInstance().disPlayImage(sdv_details_car,result.result.logo);
-            tv_this_num.setText(result.result.manNum+"人");
+            ImageLoader.getInstance().disPlayImage(sdv_details_car, result.result.logo);
+            tv_this_num.setText(result.result.manNum + "人");
             tv_this_save_money.setText(result.result.saveUpMoney);
-            tv_tuan_time.setText(result.result.groupbuyDate+"("+result.result.groupbuyWeek+")");
-            tv_tuan_address.setText("成都"+result.result.regular4sShop);
+            tv_tuan_time.setText(result.result.groupbuyDate + "(" + result.result.groupbuyWeek + ")");
+            tv_tuan_address.setText("成都" + result.result.regular4sShop);
         }
     }
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.img_wenhao:
+                popWindow.showPopWindow(img_wenhao);
+                break;
+        }
     }
 
     private CarDetailsResultBean result;
