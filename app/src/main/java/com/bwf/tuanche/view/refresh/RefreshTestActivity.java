@@ -49,4 +49,5 @@ public class RefreshTestActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }

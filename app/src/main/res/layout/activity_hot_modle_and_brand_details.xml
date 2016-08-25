@@ -59,8 +59,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ScrollView
-            android:background="@android:color/darker_gray"
+        <com.bwf.tuanche.view.ObservableScrollView
+            android:id="@+id/scrollView_detail"
+            android:background="@color/super_light_gray"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
@@ -72,9 +73,30 @@
                     android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-                <View
+                <RelativeLayout
+                    android:background="@color/super_light_gray"
                     android:layout_width="match_parent"
-                    android:layout_height="4dp"/>
+                    android:layout_height="100dp">
+
+                    <Button
+                        android:id="@+id/bt_enter_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="@dimen/dimen_10dp"
+                        android:layout_alignParentTop="true"
+                        android:text="团购报名"
+                        android:background="@drawable/selector_btn_clickable"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_below="@id/bt_enter_in"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_10"
+                        android:text="*您的信息仅供团车网团购报名使用，请放心报名！"/>
+                </RelativeLayout>
                 <fragment
                     android:id="@+id/frag_tuanche_promise"
                     android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment"
@@ -82,7 +104,9 @@
                     android:layout_height="wrap_content"/>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="4dp"/>
+                    android:layout_height="15dp"/>
+
+
                 <fragment
                     android:id="@+id/frag_tuanche_process"
                     android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CarBuyingProcessFragment"
@@ -90,7 +114,7 @@
                     android:layout_height="wrap_content"/>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="4dp"/>
+                    android:layout_height="15dp"/>
                 <fragment
                     android:id="@+id/frag_tuanche_evalute"
                     android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.BuyingCarEvaluteFragment"
@@ -98,16 +122,35 @@
                     android:layout_height="wrap_content"/>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="4dp"/>
+                    android:layout_height="15dp"/>
                 <fragment
                     android:id="@+id/frag_tuanche_commen_problem"
                     android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:background="@color/white"/>
             </LinearLayout>
 
-        </ScrollView>
+        </com.bwf.tuanche.view.ObservableScrollView>
+
+        <Button
+            android:id="@+id/bt_enter_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_alignParentBottom="true"
+            android:text="团购报名"
+            android:visibility="gone"
+            android:background="@drawable/selector_btn_clickable"/>
         <com.bwf.tuanche.view.LoadingView
             android:id="@+id/runBoy_carDetail"
             android:layout_width="match_parent"

@@ -3,10 +3,12 @@ package com.bwf.tuanche.application;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.util.DisplayMetrics;
 
 import com.bwf.tuanche.ui.mainpager.entity.hotmodle.HotModleResult;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.umeng.socialize.PlatformConfig;
+import com.uuzuche.lib_zxing.DisplayUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
@@ -36,6 +38,23 @@ public class MyApplication extends Application {
         //初始化okhttp
         initOkhttp();
 
+        /**
+         * 初始化尺寸工具类
+         */
+        initDisplayOpinion();
+    }
+
+    /**
+     * 初始化尺寸工具类
+     */
+    private void initDisplayOpinion() {
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        DisplayUtil.density = dm.density;
+        DisplayUtil.densityDPI = dm.densityDpi;
+        DisplayUtil.screenWidthPx = dm.widthPixels;
+        DisplayUtil.screenhightPx = dm.heightPixels;
+        DisplayUtil.screenWidthDip = DisplayUtil.px2dip(getApplicationContext(), dm.widthPixels);
+        DisplayUtil.screenHightDip = DisplayUtil.px2dip(getApplicationContext(), dm.heightPixels);
     }
 
     /**
