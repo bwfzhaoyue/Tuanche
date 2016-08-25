@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="com.bwf.tuanche.ui.mainpager.HotModleAndBrandDetailsActivity">
+<LinearLayout
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="45dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:padding="13dp"
+            android:id="@+id/img_retrun"
+            android:layout_width="35dp"
+            android:src="@mipmap/icon_back"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_car_brand"
+                android:textSize="@dimen/text_16"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/tv_car_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:textStyle="bold"
+                android:drawablePadding="@dimen/padding_5"
+                android:drawableRight="@mipmap/icon_xiajiantou"
+                android:textSize="@dimen/text_16"
+                android:gravity="center"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/img_share"
+            android:layout_marginRight="@dimen/padding_5"
+            android:padding="@dimen/padding_10"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon_fenxiang"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:id="@+id/scrollView_detail"
+            android:background="@color/light_gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <fragment
+                    android:id="@+id/frag_img_customer"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <Button
+                        android:id="@+id/bt_enter_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="@dimen/dimen_10dp"
+                        android:layout_alignParentTop="true"
+                        android:text="团购报名"
+                        android:background="@drawable/selector_btn_clickable"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_below="@id/bt_enter_in"
+                        android:textColor="@color/black"
+                        android:text="*您的信息仅供团车网团购报名使用，请放心报名！"/>
+                </RelativeLayout>
+                <fragment
+                    android:id="@+id/frag_tuanche_promise"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+
+
+                <fragment
+                    android:id="@+id/frag_tuanche_process"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CarBuyingProcessFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+                <fragment
+                    android:id="@+id/frag_tuanche_evalute"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.BuyingCarEvaluteFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+                <fragment
+                    android:id="@+id/frag_tuanche_commen_problem"
+                    android:name="com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/bt_enter_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_alignParentBottom="true"
+            android:text="团购报名"
+            android:visibility="gone"
+            android:background="@drawable/selector_btn_clickable"/>
+        <com.bwf.tuanche.view.LoadingView
+            android:id="@+id/runBoy_carDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.bwf.tuanche.view.LoadingView>
+    </RelativeLayout>
+</LinearLayout>

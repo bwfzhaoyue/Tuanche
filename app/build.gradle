@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.bwf.tuanche"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -18,11 +18,12 @@ android {
         }
     }
     sourceSets {
-        main {
-            res.srcDirs = ['src/main/res', 'src/main/res/drawable', 'src/main/res/anim']
-            resources.srcDirs = ['src/main/resources', 'src/main/resources/drawable']
-            jniLibs.srcDirs = ['libs']
-        }
+//        main { res.srcDirs = ['src/main/res', 'src/main/res/drawable', 'src/main/res/anim'] }
+//        main {
+//            res.srcDirs = ['src/main/res', 'src/main/res/drawable', 'src/main/res/anim']
+//            resources.srcDirs = ['src/main/resources', 'src/main/resources/drawable']
+//            jniLibs.srcDirs = ['libs']
+//        }
     }
 
 }
@@ -48,4 +49,7 @@ dependencies {
     compile name:'SMSSDKGUI-2.1.1',ext:'aar'
 
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+
+    //二维码
+    compile project(':lib-zxing')
 }

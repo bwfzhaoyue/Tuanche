@@ -1,6 +1,7 @@
 package com.bwf.tuanche.ui.mainpager.fragment;
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -8,7 +9,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseFragment;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.ui.mainpager.CenterBannerDetailActivity;
+import com.bwf.tuanche.ui.mainpager.MarrigeCarActivity;
 import com.bwf.tuanche.ui.mainpager.entity.BannerResult;
 
 public class BannerFragment extends BaseFragment {
@@ -44,7 +48,6 @@ public class BannerFragment extends BaseFragment {
 
     @Override
     protected void beforeInitView() {
-
     }
 
     @Override
@@ -139,10 +142,19 @@ public class BannerFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rel_center_banner1:
+                Bundle bundle=new Bundle();
+                bundle.putString("shareUrl",result.result.center_banner.get(0).shareUrl);
+                bundle.putString("adName",result.result.center_banner.get(0).adName);
+                IntentUtils.openActivity(getActivity(), CenterBannerDetailActivity.class,bundle);
                 break;
             case R.id.rel_center_banner2:
+                Bundle bundle1=new Bundle();
+                bundle1.putString("shareUrl",result.result.center_banner.get(1).shareUrl);
+                bundle1.putString("adName",result.result.center_banner.get(1).adName);
+                IntentUtils.openActivity(getActivity(), CenterBannerDetailActivity.class,bundle1);
                 break;
             case R.id.rel_pos_banner_type1:
+                IntentUtils.openActivity(getActivity(), MarrigeCarActivity.class);
                 break;
             case R.id.rel_pos_banner_type2:
                 break;

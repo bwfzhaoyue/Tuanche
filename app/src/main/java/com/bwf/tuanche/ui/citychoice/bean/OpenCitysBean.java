@@ -1,10 +1,13 @@
 package com.bwf.tuanche.ui.citychoice.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by che on 2016/8/17
  * Description:.
  */
-public class OpenCitysBean {
+public class OpenCitysBean implements Parcelable {
 
 //    "openCitys": [
 //    {
@@ -43,4 +46,49 @@ public class OpenCitysBean {
                 ", manNum='" + manNum + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.name);
+        dest.writeString(this.province);
+        dest.writeString(this.pinyin);
+        dest.writeString(this.citycode);
+        dest.writeString(this.pname);
+        dest.writeString(this.py);
+        dest.writeString(this.openStatus);
+        dest.writeString(this.manNum);
+    }
+
+    public OpenCitysBean() {
+    }
+
+    protected OpenCitysBean(Parcel in) {
+        this.id = in.readString();
+        this.name = in.readString();
+        this.province = in.readString();
+        this.pinyin = in.readString();
+        this.citycode = in.readString();
+        this.pname = in.readString();
+        this.py = in.readString();
+        this.openStatus = in.readString();
+        this.manNum = in.readString();
+    }
+
+    public static final Parcelable.Creator<OpenCitysBean> CREATOR = new Parcelable.Creator<OpenCitysBean>() {
+        @Override
+        public OpenCitysBean createFromParcel(Parcel source) {
+            return new OpenCitysBean(source);
+        }
+
+        @Override
+        public OpenCitysBean[] newArray(int size) {
+            return new OpenCitysBean[size];
+        }
+    };
 }

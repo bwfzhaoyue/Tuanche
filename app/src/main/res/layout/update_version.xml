@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/touminghei">
+
+    <RelativeLayout
+        android:id="@+id/rl_update_01"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/update_dialog_bg_white">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_find"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/upgrade_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/rl_update_01"
+        android:layout_marginTop="-82dp"/>
+
+    <TextView
+        android:id="@+id/tv_update_version_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/update_version_num"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:text="@string/update_version_num"
+        android:layout_alignRight="@id/img_find"
+        android:layout_alignBottom="@id/img_find"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="65dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_update_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blackban"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/img_find"
+        android:textSize="18dp"
+        android:text="版本更新内容"/>
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@id/rl_update_01"
+        android:layout_alignTop="@id/rl_update_01"
+        android:layout_marginRight="-13dp"
+        android:layout_marginTop="-13dp"
+        android:src="@drawable/update_close_select" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/rl_update_01"
+        android:layout_alignRight="@id/rl_update_01"
+        android:layout_below="@id/rl_update_01"
+        android:background="@mipmap/dialog_red_bg">
+
+        <ImageView
+            android:id="@+id/img_update_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:src="@drawable/update_grade_select" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

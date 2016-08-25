@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+  <LinearLayout
+      android:id="@+id/ll_scan"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:orientation="horizontal"
+      >
+      <RelativeLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:background="@color/white">
+
+          <com.facebook.drawee.view.SimpleDraweeView
+              android:id="@+id/sdv_scan"
+              android:layout_width="130dp"
+              android:layout_height="80dp"
+              android:layout_centerInParent="true"
+              fresco:placeholderImage="@mipmap/fast_cell_car_four"
+              fresco:placeholderImageScaleType="centerCrop" />
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1.5"
+          android:background="@color/white">
+
+          <LinearLayout
+              android:paddingLeft="@dimen/padding_5"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+              <TextView
+                  android:id="@+id/tv_scan_brand"
+                  android:textSize="@dimen/text_14"
+                  android:textColor="@color/black"
+                  android:gravity="bottom"
+                  android:text="品牌名"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"/>
+
+              <TextView
+                  android:id="@+id/tv_scan_price"
+                  android:layout_marginTop="@dimen/text_10"
+                  android:textSize="@dimen/text_14"
+                  android:textColor="@color/light_gray"
+                  android:gravity="top"
+                  android:text="指导价"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"/>
+          </LinearLayout>
+      </RelativeLayout>
+  </LinearLayout>
+</LinearLayout>

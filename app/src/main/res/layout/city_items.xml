@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_cityitems"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:paddingLeft="10dp"
+        android:layout_height="40dp"
+        android:paddingLeft="18dp"
         android:gravity="center_vertical"
-        android:textColor="@android:color/black"
-        android:text="城市检索" />
+        android:textColor="@color/blackban"
+        android:text="城市汉名检索" />
+
 </LinearLayout>

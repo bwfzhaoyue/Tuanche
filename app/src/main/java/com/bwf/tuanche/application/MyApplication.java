@@ -3,8 +3,11 @@ package com.bwf.tuanche.application;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.util.DisplayMetrics;
 
+import com.bwf.tuanche.ui.mainpager.entity.hotmodle.HotModleResult;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.uuzuche.lib_zxing.DisplayUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
@@ -26,12 +29,29 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         myApplication = this;
-
+        results = new ArrayList<>();
         //初始化facebook
         Fresco.initialize(this);
         //初始化okhttp
         initOkhttp();
 
+        /**
+         * 初始化尺寸工具类
+         */
+        initDisplayOpinion();
+    }
+
+    /**
+     * 初始化尺寸工具类
+     */
+    private void initDisplayOpinion() {
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        DisplayUtil.density = dm.density;
+        DisplayUtil.densityDPI = dm.densityDpi;
+        DisplayUtil.screenWidthPx = dm.widthPixels;
+        DisplayUtil.screenhightPx = dm.heightPixels;
+        DisplayUtil.screenWidthDip = DisplayUtil.px2dip(getApplicationContext(), dm.widthPixels);
+        DisplayUtil.screenHightDip = DisplayUtil.px2dip(getApplicationContext(), dm.heightPixels);
     }
 
     /**
@@ -55,6 +75,7 @@ public class MyApplication extends Application {
     public static Context getAppContext() {
         return myApplication.getApplicationContext();
     }
+
     /**
      * 添加Activity
      *
@@ -64,6 +85,7 @@ public class MyApplication extends Application {
         if (activity != null)
             activities.add(activity);
     }
+
     /**
      * 移除activity
      *
@@ -109,6 +131,7 @@ public class MyApplication extends Application {
             System.exit(0);
         }
     }
+
     @Override
     public void onLowMemory() {
         super.onLowMemory();
@@ -119,5 +142,28 @@ public class MyApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
         exit();
+    }
+
+    /**
+     * 浏览记录
+     */
+    private List<HotModleResult> results;
+
+    public void addHotModleResult(HotModleResult result) {
+        if (results != null) {
+            for (int i = 0; i < results.size(); i++) {
+                if (results.get(i).id.equals(result.id)) {
+                    results.remove(i);
+                }
+            }
+        }
+        if (results.size() == 20) {
+            results.remove(0);
+        }
+        results.add(result);
+    }
+
+    public List<HotModleResult> getHotModleList() {
+        return results;
     }
 }

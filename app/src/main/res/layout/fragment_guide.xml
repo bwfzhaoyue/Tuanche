@@ -4,12 +4,20 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/img_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/guide02" />
+
+    <ImageView
         android:id="@+id/img_kaiqi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="25dp"
+        android:scaleType="fitEnd"
         android:background="@drawable/selector_kaiqi"
         android:visibility="gone"/>
 
