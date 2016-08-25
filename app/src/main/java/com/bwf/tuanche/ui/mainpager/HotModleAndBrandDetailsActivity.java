@@ -25,6 +25,7 @@ import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragme
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment;
 import com.bwf.tuanche.view.LoadingView;
+import com.bwf.tuanche.view.ObservableScrollView;
 
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
     private TextView tv_car_brand, tv_car_city;
     private Boolean runBoy = true;
 
-    private ScrollView scrollView_detail;//详情页ScrollView
+    private ObservableScrollView scrollView_detail;//详情页ScrollView
 
     private Button bt_enter_in,bt_enter_bottom;//镶嵌到内容里和底部悬浮的两个报名按钮
 
@@ -96,20 +97,35 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
     public void initData() {
         tv_car_city.setText("成都站");
 
+        scrollView_detail.setOnScrollChangeListener(new ObservableScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
+                Rect scrollBounds = new Rect();
+                scrollView_detail.getHitRect(scrollBounds);
+                if (bt_enter_in.getLocalVisibleRect(scrollBounds)) {
+                    //子控件至少有一个像素在可视范围内
+                    bt_enter_bottom.setVisibility(View.GONE);
+                } else {
+                    //子控件完全不在可视范围内
+                    bt_enter_bottom.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         scrollView_detail.setOnTouchListener(new View.OnTouchListener(){
 
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if(event.getAction()== MotionEvent.ACTION_MOVE){
-                        Rect scrollBounds = new Rect();
-                        scrollView_detail.getHitRect(scrollBounds);
-                        if (bt_enter_in.getLocalVisibleRect(scrollBounds)) {
-                            //子控件至少有一个像素在可视范围内
-                            bt_enter_bottom.setVisibility(View.GONE);
-                        } else {
-                            //子控件完全不在可视范围内
-                            bt_enter_bottom.setVisibility(View.VISIBLE);
-                        }
+//                        Rect scrollBounds = new Rect();
+//                        scrollView_detail.getHitRect(scrollBounds);
+//                        if (bt_enter_in.getLocalVisibleRect(scrollBounds)) {
+//                            //子控件至少有一个像素在可视范围内
+//                            bt_enter_bottom.setVisibility(View.GONE);
+//                        } else {
+//                            //子控件完全不在可视范围内
+//                            bt_enter_bottom.setVisibility(View.VISIBLE);
+//                        }
                     }
                     return false;
                 }
