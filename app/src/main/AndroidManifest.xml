@@ -19,6 +19,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--短信验证所需权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
     <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
@@ -30,7 +36,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <!-- 引导页 -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity android:name=".ui.choosecar.ChooseCarActivity"/>
 
@@ -59,9 +69,12 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="qP8xQGb4IsYkyQy1Ca5YXd6QM0Wkstpj" />
+            android:value="qP8xQGb4IsYkyQy1Ca5YXd6QM0Wkstpj" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-        <!-- 引导页 -->
         <activity android:name=".ui.mainpager.MainPagerActivity"/>
         <activity
             android:name=".ui.mainpager.HotModleAndBrandDetailsActivity"

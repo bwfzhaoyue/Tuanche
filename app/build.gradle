@@ -27,7 +27,11 @@ android {
     }
 
 }
-
+repositories {
+    flatDir{
+        dirs 'libs'//就是你放aar的目录地址
+    }
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -40,6 +44,11 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.android.support:support-v4:24.0.0'
+    //SMSSDK
+    compile name:'SMSSDK-2.1.1',ext:'aar'
+    compile name:'SMSSDKGUI-2.1.1',ext:'aar'
+
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 
     //二维码
     compile project(':lib-zxing')
