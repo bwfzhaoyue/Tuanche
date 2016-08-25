@@ -46,5 +46,8 @@ public class UrlUtils {
     public static final String All_EVALUTE_URL = BASE_URL + "/bwf_TuanChe_BuyInfoEvaluateServlet";
     public static final String HOT_MODLE_URL=BASE_URL+"/bwf_TuanChe_Hotstyle";
 
+    //热门搜索
+    public static final String HOT_SEARCH=BASE_URL+"/bwf_TuanChe_SearchhotServlet";
+
 
 }
