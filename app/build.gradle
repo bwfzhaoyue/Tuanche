@@ -48,8 +48,6 @@ dependencies {
     compile name:'SMSSDK-2.1.1',ext:'aar'
     compile name:'SMSSDKGUI-2.1.1',ext:'aar'
 
-    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
-
     //二维码
     compile project(':lib-zxing')
 }
