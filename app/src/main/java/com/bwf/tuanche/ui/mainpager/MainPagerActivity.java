@@ -1,5 +1,6 @@
 package com.bwf.tuanche.ui.mainpager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.content.Context;
 import android.os.Handler;
@@ -35,6 +36,8 @@ import com.bwf.tuanche.view.LoadingView;
 import com.bwf.tuanche.view.refresh.PullToRefreshLayout;
 import com.bwf.tuanche.ui.update.MyUpdatePopwindow;
 import com.bwf.tuanche.view.refresh.PullableScrollView;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class MainPagerActivity extends BaseActivity implements Handler.Callback{
 
@@ -186,6 +189,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
                 IntentUtils.openActivity(this, ChooseCarActivity.class, bundle);
                 break;
             case R.id.img_erweima:
+                startActivityForResult(new Intent(this,CaptureActivity.class),0);
                 break;
             case R.id.tv_location:
                 IntentUtils.openActivity(this, CityChoiceActivity.class);
@@ -248,6 +252,22 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
                 rel_mainpager.setVisibility(View.GONE);
                 rel_person.setVisibility(View.VISIBLE);
                 break;
+        }
+    }
+
+    /**
+     * 拿到扫描二维码的结果 result
+     * 处理方式为吐司通知，可进行更改
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0&&resultCode==RESULT_OK){
+            String result = data.getStringExtra(CodeUtils.RESULT_STRING);
+            ToastUtil.showToast(result);
         }
     }
 
