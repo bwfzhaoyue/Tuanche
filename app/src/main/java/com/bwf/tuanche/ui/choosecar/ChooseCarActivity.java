@@ -35,6 +35,7 @@ import com.bwf.tuanche.ui.choosecar.entity.hotcar.HotTypeResult;
 import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeBean;
 import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeBeanGroup;
 import com.bwf.tuanche.ui.choosecar.entity.typelist.TypeListResult;
+import com.bwf.tuanche.ui.search.SearchActivity;
 import com.bwf.tuanche.view.ChooseCarPopWindow;
 import com.bwf.tuanche.view.LoadingView;
 import com.bwf.tuanche.view.refresh.RefreshTestActivity;
@@ -315,6 +316,7 @@ public class ChooseCarActivity extends BaseActivity {
      * 加载条件选车
      */
     private void loadRight(){
+        view_loading.setOnLoad();
         //加载条件选车数据----级别 国别
         HttpHelper.getConditionToChoose(new HttpCallBack<ConditionResult>() {
             @Override
@@ -347,7 +349,7 @@ public class ChooseCarActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.img_search://搜索
-                ToastUtil.showToast("暂无搜索功能");
+                IntentUtils.openActivity(ChooseCarActivity.this, SearchActivity.class);
                 break;
             case R.id.tv_brand_choosecar://品牌选车按钮
                 loadLeft();

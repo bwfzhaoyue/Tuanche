@@ -91,6 +91,17 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             }
         });
     }
+    /**
+     * 将某个View设置为返回键
+     */
+    protected void setToBack(int id){
+        findViewById(id).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
 
     /**
      * 本段代码用来处理如果输入法还显示的话就消失掉输入键盘
