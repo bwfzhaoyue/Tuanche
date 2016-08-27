@@ -1,16 +1,11 @@
 package com.bwf.tuanche.ui.mainpager;
 
-import com.umeng.socialize.UMShareAPI;
-
 import android.content.Intent;
-import android.annotation.TargetApi;
 import android.graphics.Rect;
-import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +25,10 @@ import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.CommenProblemFragme
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.ImageAndCustomerFragment;
 import com.bwf.tuanche.ui.mainpager.fragment.detailsfragment.TuanChePromiseFragment;
 import com.bwf.tuanche.view.LoadingView;
+import com.bwf.tuanche.view.ObservableScrollView;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.bwf.tuanche.view.ObservableScrollView;
 
 import java.util.List;
 
@@ -117,13 +112,17 @@ public class HotModleAndBrandDetailsActivity extends BaseActivity {
             public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
                 Rect scrollBounds = new Rect();
                 scrollView_detail.getHitRect(scrollBounds);
-                if (bt_enter_in.getLocalVisibleRect(scrollBounds)) {
-                    //子控件至少有一个像素在可视范围内
-                    bt_enter_bottom.setVisibility(View.GONE);
-                } else {
-                    //子控件完全不在可视范围内
-                    bt_enter_bottom.setVisibility(View.VISIBLE);
-                }
+
+                    if (bt_enter_in.getLocalVisibleRect(scrollBounds)) {
+                        //子控件至少有一个像素在可视范围内
+                        bt_enter_bottom.setVisibility(View.GONE);
+                    } else {
+                        //子控件完全不在可视范围内
+                        bt_enter_bottom.setVisibility(View.VISIBLE);
+
+                    }
+
+
             }
         });
 

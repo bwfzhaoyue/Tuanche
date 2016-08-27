@@ -50,7 +50,7 @@ public class SanJiaoPopWindow extends PopupWindow {
 
     public void showPopWindow(View view){
         if (!isShowing()){
-            this.showAsDropDown(view,0,0);//显示在view的下方
+            this.showAsDropDown(view);//显示在view的下方
         }
 
 

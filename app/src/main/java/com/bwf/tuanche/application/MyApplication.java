@@ -26,6 +26,16 @@ public class MyApplication extends Application {
     private List<Activity> activities = new ArrayList<>();
     private static MyApplication myApplication;
 
+    private List<String> comlistPic;
+
+    public List<String> getPicLists() {
+        return comlistPic;
+    }
+
+    public void setPicLists(List<String> picLists) {
+        this.comlistPic = picLists;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

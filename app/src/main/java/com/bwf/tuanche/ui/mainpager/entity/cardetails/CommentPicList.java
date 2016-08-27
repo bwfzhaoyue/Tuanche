@@ -5,5 +5,4 @@ package com.bwf.tuanche.ui.mainpager.entity.cardetails;
  * Description:Tuanche
  */
 public class CommentPicList {
-
 }

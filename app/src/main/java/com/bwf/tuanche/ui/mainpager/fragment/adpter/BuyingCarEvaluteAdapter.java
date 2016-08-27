@@ -35,7 +35,6 @@ public class BuyingCarEvaluteAdapter extends RecyclerView.Adapter<BuyingCarEvalu
     public BuyingCarEvaluteAdapter(Activity context) {
         this.context = context;
         adapter = new Img3_Recycler_Adapter(context);
-        layoutManager = new GridLayoutManager(context, 3);
     }
 
 
@@ -67,7 +66,7 @@ public class BuyingCarEvaluteAdapter extends RecyclerView.Adapter<BuyingCarEvalu
         else
             viewHolder.img_renzhen_evalute.setVisibility(View.GONE);
 
-//        viewHolder.recycler_evalute_img.setLayoutManager(layoutManager);
+
         viewHolder.tv_per_content.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -111,6 +110,14 @@ public class BuyingCarEvaluteAdapter extends RecyclerView.Adapter<BuyingCarEvalu
                 viewHolder.img_shrink.setImageResource(R.mipmap.up_arrows_gray);
                 viewHolder.tv_per_content.setLines(reult.get(i).lineCount);
             }
+        }
+        if (reult.get(i).commentPicList.size() == 0) {
+            viewHolder.recycler_evalute_img.setVisibility(View.GONE);
+        }
+        else {
+            viewHolder.recycler_evalute_img.setLayoutManager(new GridLayoutManager(context, 3));
+            adapter.setComlistPic(reult.get(i).commentPicList);
+            viewHolder.recycler_evalute_img.setAdapter(adapter);
         }
     }
 

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -408,7 +409,37 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
                 MyUpdatePopwindow myUpdatePopwindow = new MyUpdatePopwindow(this);
                 myUpdatePopwindow.showPopWindow(ll_search);
                 break;
+            case 2:
+                isBack = true;
+                break;
         }
         return false;
     }
+
+    private static final int TIMES = 2000;
+
+    private boolean isBack = true;
+
+    /**
+     * 监听返回键，两秒内连续两次点击返回键退出程序
+     *
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK) {//按下返回键
+
+            if (isBack) {
+                ToastUtil.showToast("再点一次退出");
+                isBack = false;
+                handler.sendEmptyMessageDelayed(2, 2000);
+            } else {
+                //退出app
+                System.exit(0);
+            }
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

@@ -74,10 +74,11 @@
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
 
         <!-- 引导页 -->
+        <activity android:name=".ui.mainpager.Img_Pop"/>
         <activity android:name=".ui.mainpager.MainPagerActivity" />
         <activity
             android:name=".ui.mainpager.HotModleAndBrandDetailsActivity"
-            android:configChanges="keyboardHidden" />
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.mainpager.CenterBannerDetailActivity" />
         <activity android:name=".ui.mainpager.MarrigeCarActivity" />
         <activity android:name=".ui.mainpager.EvaluteDetailsActivity" />

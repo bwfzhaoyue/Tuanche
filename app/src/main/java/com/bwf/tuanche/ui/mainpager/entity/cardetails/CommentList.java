@@ -1,12 +1,13 @@
 package com.bwf.tuanche.ui.mainpager.entity.cardetails;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by zengqiang on 2016/8/18.
  * Description:Tuanche
  */
-public class CommentList {
+public class CommentList implements Serializable{
 
     public String userName;
 
@@ -18,7 +19,7 @@ public class CommentList {
 
     public String memberPic;
 
-    public List<CommentPicList> commentPicList ;
+    public List<String> commentPicList ;
 
     public boolean fine;
 
