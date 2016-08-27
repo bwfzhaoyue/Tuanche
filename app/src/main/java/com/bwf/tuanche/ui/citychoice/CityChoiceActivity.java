@@ -98,6 +98,7 @@ public class CityChoiceActivity extends BaseActivity implements BackLocation,Vie
     @Override
     public void initView() {
 
+        setToBack(R.id.img_city_back);
         //顶部选择城市
         tvcity_title = findViewByIdNoCast(R.id.tvcity_title);
 
@@ -315,7 +316,7 @@ public class CityChoiceActivity extends BaseActivity implements BackLocation,Vie
         HttpHelper.getLocationCityData(UrlUtils.LOCATION_LOLATUDE, longitude, latitude, new HttpCallBack<ResultLocationCityBean>() {
             @Override
             public void onSuccess(ResultLocationCityBean result) {
-                if (result == null)
+                if (result == null||result.result==null)
                     return;
                 resultLocationCityBean = result;
                 LogUtils.e("result:----------&&&>"+result);
