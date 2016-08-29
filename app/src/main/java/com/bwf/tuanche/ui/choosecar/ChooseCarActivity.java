@@ -2,6 +2,7 @@ package com.bwf.tuanche.ui.choosecar;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -349,7 +350,9 @@ public class ChooseCarActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.img_search://搜索
-                IntentUtils.openActivity(ChooseCarActivity.this, SearchActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("cityId",cityId);
+                IntentUtils.openActivity(ChooseCarActivity.this, SearchActivity.class,bundle);
                 break;
             case R.id.tv_brand_choosecar://品牌选车按钮
                 loadLeft();
