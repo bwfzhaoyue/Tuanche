@@ -1,6 +1,8 @@
 package com.bwf.tuanche.ui.search;
 
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -133,6 +135,24 @@ public class SearchActivity extends BaseActivity {
         searchHistoryBeanList = SearchHistoryModel.getUserModel().queryAllCustomer();
         adapter.setDatas(searchHistoryBeanList);
         recycler_search_history.setAdapter(adapter);
+
+        //修改输入框的回车键显示
+        et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_SEND
+                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    if ("".equals(et_search.getText().toString())) {
+                        ToastUtil.showToast("请输入搜索内容");
+                        return true;
+                    }
+                    insert();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
