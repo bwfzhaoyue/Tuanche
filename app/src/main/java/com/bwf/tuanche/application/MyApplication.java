@@ -25,7 +25,7 @@ import okhttp3.OkHttpClient;
 public class MyApplication extends Application {
     private List<Activity> activities = new ArrayList<>();
     private static MyApplication myApplication;
-
+    private boolean isUpdata=true;
     private List<String> comlistPic;
 
     public List<String> getPicLists() {
@@ -34,6 +34,14 @@ public class MyApplication extends Application {
 
     public void setPicLists(List<String> picLists) {
         this.comlistPic = picLists;
+    }
+
+    public boolean isUpdata() {
+        return isUpdata;
+    }
+
+    public void setUpdata(boolean updata) {
+        isUpdata = updata;
     }
 
     @Override

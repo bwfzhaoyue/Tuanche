@@ -51,7 +51,8 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity android:name=".ui.choosecar.ChooseCarActivity" />
-        <activity android:name=".ui.citychoice.CityChoiceActivity" />
+        <activity android:name=".ui.citychoice.CityChoiceActivity"
+            android:launchMode="singleTask"/>
         <activity android:name=".ui.welcome.GuideActivity" />
         <activity android:name=".ui.welcome.WelcomeActivity" >
             <intent-filter>
@@ -75,7 +76,8 @@
 
         <!-- 引导页 -->
         <activity android:name=".ui.mainpager.Img_Pop"/>
-        <activity android:name=".ui.mainpager.MainPagerActivity" />
+        <activity android:name=".ui.mainpager.MainPagerActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".ui.mainpager.HotModleAndBrandDetailsActivity"
             android:windowSoftInputMode="adjustPan" />
