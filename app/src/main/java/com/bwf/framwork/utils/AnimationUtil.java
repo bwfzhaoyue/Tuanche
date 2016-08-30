@@ -13,38 +13,33 @@ import android.view.animation.TranslateAnimation;
 public class AnimationUtil {
 
     //动画持续时间
-    public final static int ANIMATION_IN_TIME=800;
-    public final static int ANIMATION_OUT_TIME=800;
+    public final static int ANIMATION_IN_TIME = 800;
+    public final static int ANIMATION_OUT_TIME = 800;
 
-    public static Animation createInAnimation(Context context, int fromXDelta){
-        AnimationSet set=new AnimationSet(context,null);
+    public static Animation createInAnimation(Context context, int fromXDelta) {
+        AnimationSet set = new AnimationSet(context, null);
         set.setFillAfter(true);
 
-        TranslateAnimation animation=new TranslateAnimation(fromXDelta,0,0,0);
+        TranslateAnimation animation = new TranslateAnimation(fromXDelta, 0, 0, 0);
         animation.setDuration(ANIMATION_IN_TIME);
         set.addAnimation(animation);
 
-        AlphaAnimation alphaAnimation=new AlphaAnimation(0,1);
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
         alphaAnimation.setDuration(ANIMATION_IN_TIME);
         set.addAnimation(alphaAnimation);
-
-
         return set;
     }
 
-    public static Animation createOutAnimation(Context context,int toXDelta){
-        AnimationSet set=new AnimationSet(context,null);
+    public static Animation createOutAnimation(Context context, int toXDelta) {
+        AnimationSet set = new AnimationSet(context, null);
         set.setFillAfter(true);
 
-        TranslateAnimation animation=new TranslateAnimation(0,toXDelta,0,0);
+        TranslateAnimation animation = new TranslateAnimation(0, toXDelta, 0, 0);
         animation.setDuration(ANIMATION_OUT_TIME);
         set.addAnimation(animation);
-
-        AlphaAnimation alphaAnimation=new AlphaAnimation(1,0);
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
         alphaAnimation.setDuration(ANIMATION_OUT_TIME);
         set.addAnimation(alphaAnimation);
-
-
         return set;
     }
 }
