@@ -18,6 +18,7 @@ import com.bwf.framwork.http.HttpHelper;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.ToastUtil;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.application.MyApplication;
 import com.bwf.tuanche.ui.choosecar.ChooseCarActivity;
 import com.bwf.tuanche.ui.citychoice.CityChoiceActivity;
 import com.bwf.tuanche.ui.mainpager.entity.BannerResult;
@@ -36,7 +37,7 @@ import com.bwf.tuanche.view.refresh.PullableScrollView;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
-public class MainPagerActivity extends BaseActivity implements Handler.Callback{
+public class MainPagerActivity extends BaseActivity implements Handler.Callback {
 
     private PromoteAndTabFragment frag_promote_tabs;
     private HotBrandFragment frag_hot_brand;
@@ -59,11 +60,11 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
     private PullToRefreshLayout pullToRefreshLayout_This;
     private RelativeLayout rel_person, rel_mainpager;
 
-    private TextView tv_my, tv_main, tv_order, tv_service,tv_search;
+    private TextView tv_my, tv_main, tv_order, tv_service, tv_search;
 
-    private ImageView img_my, img_main, img_order, img_service,img_erweima;
+    private ImageView img_my, img_main, img_order, img_service, img_erweima;
 
-
+    private boolean isUpdata;
     private LinearLayout ll_main, ll_order, ll_service, ll_my;
     private Handler handler;
 
@@ -74,10 +75,10 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
     @Override
     public void beforeInitView() {
 
-
         handler = new Handler(this);
-        handler.sendEmptyMessageDelayed(1,1000);
-
+        isUpdata = MyApplication.getMyApplication().isUpdata();
+        if (isUpdata)
+            handler.sendEmptyMessageDelayed(1, 1000);
 
 
 //        cityId=getIntent().getStringExtra("cityId");
@@ -125,7 +126,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
         frag_promote_tabs.setCityId(cityId);
         frag_hot_brand.setCityId(cityId);
         scroView_main.setCanLoadMore(false);
-        setOnClick(tv_search,img_labe, tv_location, ll_main, ll_order, ll_service, ll_my,img_erweima);
+        setOnClick(tv_search, img_labe, tv_location, ll_main, ll_order, ll_service, ll_my, img_erweima);
         scr_mainpager.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
@@ -192,7 +193,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
                 IntentUtils.openActivity(this, ChooseCarActivity.class, bundle);
                 break;
             case R.id.img_erweima:
-                startActivityForResult(new Intent(this,CaptureActivity.class),0);
+                startActivityForResult(new Intent(this, CaptureActivity.class), 0);
                 break;
             case R.id.tv_location:
                 IntentUtils.openActivity(this, CityChoiceActivity.class);
@@ -261,6 +262,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
     /**
      * 拿到扫描二维码的结果 result
      * 处理方式为吐司通知，可进行更改
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -268,7 +270,7 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0&&resultCode==RESULT_OK){
+        if (requestCode == 0 && resultCode == RESULT_OK) {
             String result = data.getStringExtra(CodeUtils.RESULT_STRING);
             ToastUtil.showToast(result);
         }
@@ -404,10 +406,11 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
 
     @Override
     public boolean handleMessage(Message message) {
-        switch (message.what){
+        switch (message.what) {
             case 1:
                 MyUpdatePopwindow myUpdatePopwindow = new MyUpdatePopwindow(this);
                 myUpdatePopwindow.showPopWindow(ll_search);
+                MyApplication.getMyApplication().setUpdata(false);
                 break;
             case 2:
                 isBack = true;
@@ -422,7 +425,6 @@ public class MainPagerActivity extends BaseActivity implements Handler.Callback{
 
     /**
      * 监听返回键，两秒内连续两次点击返回键退出程序
-     *
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
